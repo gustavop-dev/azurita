@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-%twg5w8%&fqxnnehvw8p+1&qo6yt5u#*1owho-rse#-nrqhfw3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['azurita.projectapp.co']
 
 
 # Application definition
