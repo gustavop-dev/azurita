@@ -1,0 +1,16 @@
+[Unit]
+Description=Gunicorn daemon for Azurita Django Application
+After=network.target
+
+[Service]
+User=ryzepeck
+Group=www-data
+WorkingDirectory=/home/ryzepeck/webapps/azurita
+Environment="PATH=/home/ryzepeck/webapps/azurita/venv/bin"
+ExecStart=/home/ryzepeck/webapps/azurita/venv/bin/gunicorn \
+          --workers 3 \
+          --bind unix:/home/ryzepeck/webapps/azurita/azurita.sock \
+          backend.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
