@@ -138,12 +138,17 @@ router.beforeEach((to, from, next) => {
   // Verificar si el puzzle está desbloqueado por fecha y progresión
   if (to.meta.unlockDate && to.name) {
     const unlockDate = to.meta.unlockDate as Date
-    const puzzleNumber = parseInt(to.name.toString().split('-')[1])
+    const routeName = to.name.toString()
+    const puzzlePart = routeName.split('-')[1]
     
-    if (!isPuzzleUnlocked(puzzleNumber, unlockDate)) {
-      // Redirigir al home si intenta acceder a un puzzle bloqueado
-      next('/')
-      return
+    if (puzzlePart) {
+      const puzzleNumber = parseInt(puzzlePart)
+      
+      if (!isPuzzleUnlocked(puzzleNumber, unlockDate)) {
+        // Redirigir al home si intenta acceder a un puzzle bloqueado
+        next('/')
+        return
+      }
     }
   }
   
