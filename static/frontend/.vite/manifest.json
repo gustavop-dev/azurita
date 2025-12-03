@@ -1,11 +1,157 @@
 {
   "index.html": {
-    "file": "assets/index.DQfmfMa9.js",
+    "file": "assets/index.DnFTQ8TU.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
+    "dynamicImports": [
+      "src/views/puzzles/puzzle_1.vue",
+      "src/views/puzzles/puzzle_2.vue",
+      "src/views/puzzles/puzzle_3.vue",
+      "src/views/puzzles/puzzle_4.vue",
+      "src/views/puzzles/puzzle_5.vue",
+      "src/views/puzzles/puzzle_6.vue",
+      "src/views/puzzles/puzzle_7.vue",
+      "src/views/puzzles/puzzle_8.vue",
+      "src/views/puzzles/puzzle_9.vue",
+      "src/views/puzzles/puzzle_10.vue",
+      "src/views/puzzles/puzzle_11.vue",
+      "src/views/puzzles/puzzle_12.vue",
+      "src/views/puzzles/puzzle_13.vue"
+    ],
     "css": [
-      "assets/index.Cx-ouguq.css"
+      "assets/index.B8xp1dB0.css"
+    ]
+  },
+  "src/assets/resources/puzzle_1/IMG-20250228-WA0004.jpg": {
+    "file": "assets/IMG-20250228-WA0004.wr9X3_yO.jpg",
+    "src": "src/assets/resources/puzzle_1/IMG-20250228-WA0004.jpg"
+  },
+  "src/assets/resources/puzzle_2/IMG-20250228-WA0064.jpg": {
+    "file": "assets/IMG-20250228-WA0064.BgEfP1Zx.jpg",
+    "src": "src/assets/resources/puzzle_2/IMG-20250228-WA0064.jpg"
+  },
+  "src/views/puzzles/puzzle_1.vue": {
+    "file": "assets/puzzle_1.DetsQUw5.js",
+    "name": "puzzle_1",
+    "src": "src/views/puzzles/puzzle_1.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ],
+    "assets": [
+      "assets/IMG-20250228-WA0004.wr9X3_yO.jpg"
+    ]
+  },
+  "src/views/puzzles/puzzle_10.vue": {
+    "file": "assets/puzzle_10.oSND_5w1.js",
+    "name": "puzzle_10",
+    "src": "src/views/puzzles/puzzle_10.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/views/puzzles/puzzle_11.vue": {
+    "file": "assets/puzzle_11.DU3Rkxz2.js",
+    "name": "puzzle_11",
+    "src": "src/views/puzzles/puzzle_11.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/views/puzzles/puzzle_12.vue": {
+    "file": "assets/puzzle_12.DFv5QiAE.js",
+    "name": "puzzle_12",
+    "src": "src/views/puzzles/puzzle_12.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/views/puzzles/puzzle_13.vue": {
+    "file": "assets/puzzle_13.DiGFBaD-.js",
+    "name": "puzzle_13",
+    "src": "src/views/puzzles/puzzle_13.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/views/puzzles/puzzle_2.vue": {
+    "file": "assets/puzzle_2.D7bMLJWt.js",
+    "name": "puzzle_2",
+    "src": "src/views/puzzles/puzzle_2.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ],
+    "assets": [
+      "assets/IMG-20250228-WA0064.BgEfP1Zx.jpg"
+    ]
+  },
+  "src/views/puzzles/puzzle_3.vue": {
+    "file": "assets/puzzle_3.3y7otMas.js",
+    "name": "puzzle_3",
+    "src": "src/views/puzzles/puzzle_3.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/views/puzzles/puzzle_4.vue": {
+    "file": "assets/puzzle_4.CGctdDGA.js",
+    "name": "puzzle_4",
+    "src": "src/views/puzzles/puzzle_4.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/views/puzzles/puzzle_5.vue": {
+    "file": "assets/puzzle_5.BLZ_PAVU.js",
+    "name": "puzzle_5",
+    "src": "src/views/puzzles/puzzle_5.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/views/puzzles/puzzle_6.vue": {
+    "file": "assets/puzzle_6.CcKaw8mt.js",
+    "name": "puzzle_6",
+    "src": "src/views/puzzles/puzzle_6.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/views/puzzles/puzzle_7.vue": {
+    "file": "assets/puzzle_7.CSuh5tZG.js",
+    "name": "puzzle_7",
+    "src": "src/views/puzzles/puzzle_7.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/views/puzzles/puzzle_8.vue": {
+    "file": "assets/puzzle_8.CWc4E7uk.js",
+    "name": "puzzle_8",
+    "src": "src/views/puzzles/puzzle_8.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/views/puzzles/puzzle_9.vue": {
+    "file": "assets/puzzle_9.Dz5KbEdW.js",
+    "name": "puzzle_9",
+    "src": "src/views/puzzles/puzzle_9.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
     ]
   }
 }
