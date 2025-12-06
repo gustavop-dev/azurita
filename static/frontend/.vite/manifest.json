@@ -1,6 +1,6 @@
 {
   "index.html": {
-    "file": "assets/index.CvOTlWbH.js",
+    "file": "assets/index.DcgtVB5P.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -20,7 +20,7 @@
       "src/views/puzzles/puzzle_13.vue"
     ],
     "css": [
-      "assets/index.BW9W9cta.css"
+      "assets/index.BLFPt9Eu.css"
     ]
   },
   "src/assets/resources/puzzle_1/IMG-20250228-WA0004.jpg": {
@@ -92,7 +92,7 @@
     "src": "src/assets/resources/puzzle_9/IMG-20250814-WA0036.jpg"
   },
   "src/views/puzzles/puzzle_1.vue": {
-    "file": "assets/puzzle_1.CbQ59Ek-.js",
+    "file": "assets/puzzle_1.B2Y9N2V0.js",
     "name": "puzzle_1",
     "src": "src/views/puzzles/puzzle_1.vue",
     "isDynamicEntry": true,
@@ -104,7 +104,7 @@
     ]
   },
   "src/views/puzzles/puzzle_10.vue": {
-    "file": "assets/puzzle_10.C-mN-56U.js",
+    "file": "assets/puzzle_10.BDkb3z8X.js",
     "name": "puzzle_10",
     "src": "src/views/puzzles/puzzle_10.vue",
     "isDynamicEntry": true,
@@ -116,7 +116,7 @@
     ]
   },
   "src/views/puzzles/puzzle_11.vue": {
-    "file": "assets/puzzle_11.s8gZ8U2T.js",
+    "file": "assets/puzzle_11.yMvObjgE.js",
     "name": "puzzle_11",
     "src": "src/views/puzzles/puzzle_11.vue",
     "isDynamicEntry": true,
@@ -128,7 +128,7 @@
     ]
   },
   "src/views/puzzles/puzzle_12.vue": {
-    "file": "assets/puzzle_12.HJ89LOjT.js",
+    "file": "assets/puzzle_12.CbkrqvCQ.js",
     "name": "puzzle_12",
     "src": "src/views/puzzles/puzzle_12.vue",
     "isDynamicEntry": true,
@@ -140,7 +140,7 @@
     ]
   },
   "src/views/puzzles/puzzle_13.vue": {
-    "file": "assets/puzzle_13.5pDiCp3P.js",
+    "file": "assets/puzzle_13.D2ZWj-ey.js",
     "name": "puzzle_13",
     "src": "src/views/puzzles/puzzle_13.vue",
     "isDynamicEntry": true,
@@ -149,7 +149,7 @@
     ]
   },
   "src/views/puzzles/puzzle_2.vue": {
-    "file": "assets/puzzle_2.BxVgYTBa.js",
+    "file": "assets/puzzle_2.DL1yfA0z.js",
     "name": "puzzle_2",
     "src": "src/views/puzzles/puzzle_2.vue",
     "isDynamicEntry": true,
@@ -161,7 +161,7 @@
     ]
   },
   "src/views/puzzles/puzzle_3.vue": {
-    "file": "assets/puzzle_3.CM2q25RF.js",
+    "file": "assets/puzzle_3.iXgw42x_.js",
     "name": "puzzle_3",
     "src": "src/views/puzzles/puzzle_3.vue",
     "isDynamicEntry": true,
@@ -170,7 +170,7 @@
     ]
   },
   "src/views/puzzles/puzzle_4.vue": {
-    "file": "assets/puzzle_4.BTY1zBBh.js",
+    "file": "assets/puzzle_4.BcnH7mb-.js",
     "name": "puzzle_4",
     "src": "src/views/puzzles/puzzle_4.vue",
     "isDynamicEntry": true,
@@ -182,7 +182,7 @@
     ]
   },
   "src/views/puzzles/puzzle_5.vue": {
-    "file": "assets/puzzle_5.B5hBKAeN.js",
+    "file": "assets/puzzle_5.N-oJHrQ3.js",
     "name": "puzzle_5",
     "src": "src/views/puzzles/puzzle_5.vue",
     "isDynamicEntry": true,
@@ -194,7 +194,7 @@
     ]
   },
   "src/views/puzzles/puzzle_6.vue": {
-    "file": "assets/puzzle_6.B8unzZ0j.js",
+    "file": "assets/puzzle_6.B3q7Y2Ql.js",
     "name": "puzzle_6",
     "src": "src/views/puzzles/puzzle_6.vue",
     "isDynamicEntry": true,
@@ -207,7 +207,7 @@
     ]
   },
   "src/views/puzzles/puzzle_7.vue": {
-    "file": "assets/puzzle_7.23mqTFFS.js",
+    "file": "assets/puzzle_7.DazJOA9A.js",
     "name": "puzzle_7",
     "src": "src/views/puzzles/puzzle_7.vue",
     "isDynamicEntry": true,
@@ -222,7 +222,7 @@
     ]
   },
   "src/views/puzzles/puzzle_8.vue": {
-    "file": "assets/puzzle_8.B9jN-wTV.js",
+    "file": "assets/puzzle_8.D_xFDehm.js",
     "name": "puzzle_8",
     "src": "src/views/puzzles/puzzle_8.vue",
     "isDynamicEntry": true,
@@ -235,7 +235,7 @@
     ]
   },
   "src/views/puzzles/puzzle_9.vue": {
-    "file": "assets/puzzle_9.U_sLBI5b.js",
+    "file": "assets/puzzle_9.yQ9BhCkU.js",
     "name": "puzzle_9",
     "src": "src/views/puzzles/puzzle_9.vue",
     "isDynamicEntry": true,
