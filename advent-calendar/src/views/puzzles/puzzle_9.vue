@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import puzzleImage1 from '@/assets/resources/puzzle_9/IMG-20250808-WA0000.jpg'
+import puzzleImage2 from '@/assets/resources/puzzle_9/IMG-20250814-WA0036.jpg'
 
 const puzzleCompleted = ref(false)
 
@@ -14,35 +16,67 @@ const completePuzzle = () => {
 </script>
 
 <template>
-  <div class="min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-2xl border-4 border-christmas-red">
-      <h1 class="text-4xl font-bold text-center mb-4 text-christmas-red">
-        🎄 Puzzle 9 🎄
-      </h1>
-      <p class="text-center text-gray-600 mb-8">
-        Noveno desafío del calendario de adviento
-      </p>
+  <div class="min-h-screen flex items-center justify-center p-8 bg-christmas-cream">
+    <div class="bg-white rounded-3xl w-full max-w-xl border-4 border-black" style="box-shadow: 10px 10px 0px 0px rgba(220, 38, 38, 0.3);">
       
-      <div class="min-h-[300px] flex items-center justify-center">
-        <div v-if="!puzzleCompleted" class="text-center">
-          <p class="text-xl mb-6">¡Aquí va tu puzzle!</p>
+      <div v-if="!puzzleCompleted">
+        <!-- Header -->
+        <div class="text-center pt-10 pb-8 px-10">
+          <span class="text-xs uppercase tracking-widest text-gray-400 font-medium">Día 9</span>
+          <h1 class="text-2xl font-black text-gray-800 mt-3">
+            ¿Alguna vez habías sido así de tierna?
+          </h1>
+        </div>
+        
+        <!-- Imágenes -->
+        <div class="px-10 pb-10 space-y-4">
+          <img 
+            :src="puzzleImage1" 
+            alt="Momento tierno 1" 
+            class="w-full rounded-2xl"
+          />
+          <img 
+            :src="puzzleImage2" 
+            alt="Momento tierno 2" 
+            class="w-full rounded-2xl"
+          />
+        </div>
+        
+        <!-- Separador -->
+        <div class="border-t-2 border-gray-100"></div>
+        
+        <!-- Botón -->
+        <div class="p-10">
           <button
             @click="completePuzzle"
-            class="bg-christmas-green text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+            class="w-full py-5 rounded-xl font-bold text-lg transition-all transform hover:scale-[1.01] active:scale-[0.99]"
+            style="background-color: #a8e6cf; border: 3px solid #000;"
           >
-            Resolver Puzzle
+            Continuar
           </button>
         </div>
         
-        <div v-else class="text-center">
-          <p class="text-3xl mb-4">🎉 ¡Completado! 🎉</p>
-          <router-link
-            to="/"
-            class="inline-block bg-christmas-red text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
-          >
-            Volver al Inicio
+        <!-- Volver -->
+        <div class="border-t-2 border-gray-100 py-6 text-center">
+          <router-link to="/" class="text-gray-400 hover:text-gray-600 text-sm font-medium transition-colors">
+            ← Volver al calendario
           </router-link>
         </div>
+      </div>
+      
+      <!-- Completado -->
+      <div v-else class="text-center p-16">
+        <div class="text-7xl mb-8">🥰</div>
+        <h2 class="text-3xl font-black text-gray-800 mb-4">Qué ternura</h2>
+        <p class="text-gray-500 text-lg mb-10">Momentos que derriten el corazón 💕</p>
+        
+        <router-link
+          to="/"
+          class="inline-block px-10 py-5 rounded-xl font-bold text-lg transition-all transform hover:scale-[1.02]"
+          style="background-color: #a8e6cf; border: 3px solid #000;"
+        >
+          Continuar →
+        </router-link>
       </div>
     </div>
   </div>
