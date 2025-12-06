@@ -1,6 +1,6 @@
 {
   "index.html": {
-    "file": "assets/index.DnFTQ8TU.js",
+    "file": "assets/index.CvOTlWbH.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -20,19 +20,79 @@
       "src/views/puzzles/puzzle_13.vue"
     ],
     "css": [
-      "assets/index.B8xp1dB0.css"
+      "assets/index.BW9W9cta.css"
     ]
   },
   "src/assets/resources/puzzle_1/IMG-20250228-WA0004.jpg": {
     "file": "assets/IMG-20250228-WA0004.wr9X3_yO.jpg",
     "src": "src/assets/resources/puzzle_1/IMG-20250228-WA0004.jpg"
   },
+  "src/assets/resources/puzzle_10/IMG-20250826-WA0017.jpg": {
+    "file": "assets/IMG-20250826-WA0017.xF4rXsdC.jpg",
+    "src": "src/assets/resources/puzzle_10/IMG-20250826-WA0017.jpg"
+  },
+  "src/assets/resources/puzzle_11/IMG-20251006-WA0003.jpg": {
+    "file": "assets/IMG-20251006-WA0003.DaikYYcQ.jpg",
+    "src": "src/assets/resources/puzzle_11/IMG-20251006-WA0003.jpg"
+  },
+  "src/assets/resources/puzzle_12/IMG-20251101-WA0108.jpg": {
+    "file": "assets/IMG-20251101-WA0108.Dk_Yw-ox.jpg",
+    "src": "src/assets/resources/puzzle_12/IMG-20251101-WA0108.jpg"
+  },
   "src/assets/resources/puzzle_2/IMG-20250228-WA0064.jpg": {
     "file": "assets/IMG-20250228-WA0064.BgEfP1Zx.jpg",
     "src": "src/assets/resources/puzzle_2/IMG-20250228-WA0064.jpg"
   },
+  "src/assets/resources/puzzle_4/IMG-20250412-WA0099.jpg": {
+    "file": "assets/IMG-20250412-WA0099.H_0DcEQJ.jpg",
+    "src": "src/assets/resources/puzzle_4/IMG-20250412-WA0099.jpg"
+  },
+  "src/assets/resources/puzzle_5/IMG-20250406-WA0007.jpg": {
+    "file": "assets/IMG-20250406-WA0007.Bpo53CMB.jpg",
+    "src": "src/assets/resources/puzzle_5/IMG-20250406-WA0007.jpg"
+  },
+  "src/assets/resources/puzzle_6/IMG-20250511-WA0019.jpg": {
+    "file": "assets/IMG-20250511-WA0019.Beaz6fxz.jpg",
+    "src": "src/assets/resources/puzzle_6/IMG-20250511-WA0019.jpg"
+  },
+  "src/assets/resources/puzzle_6/IMG-20250702-WA0022.jpg": {
+    "file": "assets/IMG-20250702-WA0022.BhVv-Y2y.jpg",
+    "src": "src/assets/resources/puzzle_6/IMG-20250702-WA0022.jpg"
+  },
+  "src/assets/resources/puzzle_7/IMG-20250714-WA0008.jpg": {
+    "file": "assets/IMG-20250714-WA0008.B2HQDyw1.jpg",
+    "src": "src/assets/resources/puzzle_7/IMG-20250714-WA0008.jpg"
+  },
+  "src/assets/resources/puzzle_7/IMG-20250716-WA0001.jpg": {
+    "file": "assets/IMG-20250716-WA0001.CLzexK_r.jpg",
+    "src": "src/assets/resources/puzzle_7/IMG-20250716-WA0001.jpg"
+  },
+  "src/assets/resources/puzzle_7/IMG-20250716-WA0013.jpg": {
+    "file": "assets/IMG-20250716-WA0013.mpiT367X.jpg",
+    "src": "src/assets/resources/puzzle_7/IMG-20250716-WA0013.jpg"
+  },
+  "src/assets/resources/puzzle_7/IMG-20250716-WA0018.jpg": {
+    "file": "assets/IMG-20250716-WA0018.BKCKIagM.jpg",
+    "src": "src/assets/resources/puzzle_7/IMG-20250716-WA0018.jpg"
+  },
+  "src/assets/resources/puzzle_8/IMG-20250723-WA0022.jpg": {
+    "file": "assets/IMG-20250723-WA0022.C35o_LMn.jpg",
+    "src": "src/assets/resources/puzzle_8/IMG-20250723-WA0022.jpg"
+  },
+  "src/assets/resources/puzzle_8/IMG-20250726-WA0020.jpg": {
+    "file": "assets/IMG-20250726-WA0020.YfKBGUGr.jpg",
+    "src": "src/assets/resources/puzzle_8/IMG-20250726-WA0020.jpg"
+  },
+  "src/assets/resources/puzzle_9/IMG-20250808-WA0000.jpg": {
+    "file": "assets/IMG-20250808-WA0000.CjkAfCGX.jpg",
+    "src": "src/assets/resources/puzzle_9/IMG-20250808-WA0000.jpg"
+  },
+  "src/assets/resources/puzzle_9/IMG-20250814-WA0036.jpg": {
+    "file": "assets/IMG-20250814-WA0036.9Pa4amje.jpg",
+    "src": "src/assets/resources/puzzle_9/IMG-20250814-WA0036.jpg"
+  },
   "src/views/puzzles/puzzle_1.vue": {
-    "file": "assets/puzzle_1.DetsQUw5.js",
+    "file": "assets/puzzle_1.CbQ59Ek-.js",
     "name": "puzzle_1",
     "src": "src/views/puzzles/puzzle_1.vue",
     "isDynamicEntry": true,
@@ -44,34 +104,43 @@
     ]
   },
   "src/views/puzzles/puzzle_10.vue": {
-    "file": "assets/puzzle_10.oSND_5w1.js",
+    "file": "assets/puzzle_10.C-mN-56U.js",
     "name": "puzzle_10",
     "src": "src/views/puzzles/puzzle_10.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
+    ],
+    "assets": [
+      "assets/IMG-20250826-WA0017.xF4rXsdC.jpg"
     ]
   },
   "src/views/puzzles/puzzle_11.vue": {
-    "file": "assets/puzzle_11.DU3Rkxz2.js",
+    "file": "assets/puzzle_11.s8gZ8U2T.js",
     "name": "puzzle_11",
     "src": "src/views/puzzles/puzzle_11.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
+    ],
+    "assets": [
+      "assets/IMG-20251006-WA0003.DaikYYcQ.jpg"
     ]
   },
   "src/views/puzzles/puzzle_12.vue": {
-    "file": "assets/puzzle_12.DFv5QiAE.js",
+    "file": "assets/puzzle_12.HJ89LOjT.js",
     "name": "puzzle_12",
     "src": "src/views/puzzles/puzzle_12.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
+    ],
+    "assets": [
+      "assets/IMG-20251101-WA0108.Dk_Yw-ox.jpg"
     ]
   },
   "src/views/puzzles/puzzle_13.vue": {
-    "file": "assets/puzzle_13.DiGFBaD-.js",
+    "file": "assets/puzzle_13.5pDiCp3P.js",
     "name": "puzzle_13",
     "src": "src/views/puzzles/puzzle_13.vue",
     "isDynamicEntry": true,
@@ -80,7 +149,7 @@
     ]
   },
   "src/views/puzzles/puzzle_2.vue": {
-    "file": "assets/puzzle_2.D7bMLJWt.js",
+    "file": "assets/puzzle_2.BxVgYTBa.js",
     "name": "puzzle_2",
     "src": "src/views/puzzles/puzzle_2.vue",
     "isDynamicEntry": true,
@@ -92,7 +161,7 @@
     ]
   },
   "src/views/puzzles/puzzle_3.vue": {
-    "file": "assets/puzzle_3.3y7otMas.js",
+    "file": "assets/puzzle_3.CM2q25RF.js",
     "name": "puzzle_3",
     "src": "src/views/puzzles/puzzle_3.vue",
     "isDynamicEntry": true,
@@ -101,57 +170,81 @@
     ]
   },
   "src/views/puzzles/puzzle_4.vue": {
-    "file": "assets/puzzle_4.CGctdDGA.js",
+    "file": "assets/puzzle_4.BTY1zBBh.js",
     "name": "puzzle_4",
     "src": "src/views/puzzles/puzzle_4.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
+    ],
+    "assets": [
+      "assets/IMG-20250412-WA0099.H_0DcEQJ.jpg"
     ]
   },
   "src/views/puzzles/puzzle_5.vue": {
-    "file": "assets/puzzle_5.BLZ_PAVU.js",
+    "file": "assets/puzzle_5.B5hBKAeN.js",
     "name": "puzzle_5",
     "src": "src/views/puzzles/puzzle_5.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
+    ],
+    "assets": [
+      "assets/IMG-20250406-WA0007.Bpo53CMB.jpg"
     ]
   },
   "src/views/puzzles/puzzle_6.vue": {
-    "file": "assets/puzzle_6.CcKaw8mt.js",
+    "file": "assets/puzzle_6.B8unzZ0j.js",
     "name": "puzzle_6",
     "src": "src/views/puzzles/puzzle_6.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
+    ],
+    "assets": [
+      "assets/IMG-20250511-WA0019.Beaz6fxz.jpg",
+      "assets/IMG-20250702-WA0022.BhVv-Y2y.jpg"
     ]
   },
   "src/views/puzzles/puzzle_7.vue": {
-    "file": "assets/puzzle_7.CSuh5tZG.js",
+    "file": "assets/puzzle_7.23mqTFFS.js",
     "name": "puzzle_7",
     "src": "src/views/puzzles/puzzle_7.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
+    ],
+    "assets": [
+      "assets/IMG-20250714-WA0008.B2HQDyw1.jpg",
+      "assets/IMG-20250716-WA0001.CLzexK_r.jpg",
+      "assets/IMG-20250716-WA0013.mpiT367X.jpg",
+      "assets/IMG-20250716-WA0018.BKCKIagM.jpg"
     ]
   },
   "src/views/puzzles/puzzle_8.vue": {
-    "file": "assets/puzzle_8.CWc4E7uk.js",
+    "file": "assets/puzzle_8.B9jN-wTV.js",
     "name": "puzzle_8",
     "src": "src/views/puzzles/puzzle_8.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
+    ],
+    "assets": [
+      "assets/IMG-20250723-WA0022.C35o_LMn.jpg",
+      "assets/IMG-20250726-WA0020.YfKBGUGr.jpg"
     ]
   },
   "src/views/puzzles/puzzle_9.vue": {
-    "file": "assets/puzzle_9.Dz5KbEdW.js",
+    "file": "assets/puzzle_9.U_sLBI5b.js",
     "name": "puzzle_9",
     "src": "src/views/puzzles/puzzle_9.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html"
+    ],
+    "assets": [
+      "assets/IMG-20250808-WA0000.CjkAfCGX.jpg",
+      "assets/IMG-20250814-WA0036.9Pa4amje.jpg"
     ]
   }
 }
