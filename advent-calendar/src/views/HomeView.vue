@@ -49,10 +49,31 @@ const goToPuzzle = (number: number, unlockDate: Date) => {
     router.push(`/puzzle/${number}`)
   }
 }
+
+const resetProgress = () => {
+  if (confirm('¿Estás segura de que quieres reiniciar todo el progreso? Esto borrará todas las respuestas guardadas.')) {
+    // Limpiar todos los puzzles
+    for (let i = 1; i <= 13; i++) {
+      localStorage.removeItem(`puzzle_${i}_solved`)
+      localStorage.removeItem(`puzzle_${i}_response`)
+    }
+    // Recargar la página para reflejar los cambios
+    window.location.reload()
+  }
+}
 </script>
 
 <template>
   <div class="flex flex-col items-center justify-center min-h-screen px-4 relative z-10">
+    <!-- Botón de Restaurar -->
+    <button
+      @click="resetProgress"
+      class="absolute top-8 right-8 px-10 py-3 bg-white hover:bg-gray-50 text-gray-800 font-bold rounded-xl border-3 border-black transition-all transform hover:scale-105 active:scale-95 z-20"
+      style="box-shadow: 4px 4px 0px 0px rgba(220, 38, 38, 0.3);"
+    >
+      Restaurar
+    </button>
+    
     <div
       v-for="(puzzle, index) in puzzles"
       :key="puzzle.number"
