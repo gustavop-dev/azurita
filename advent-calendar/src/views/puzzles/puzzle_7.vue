@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import puzzleImage1 from '@/assets/resources/puzzle_7/IMG-20250702-WA0022.jpg'
+import puzzleImage1 from '@/assets/resources/puzzle_7/IMG-20250716-WA0001.jpg'
 import puzzleImage2 from '@/assets/resources/puzzle_7/IMG-20250714-WA0008.jpg'
 import PuzzleCompleted from '@/components/PuzzleCompleted.vue'
 import puzzleImage3 from '@/assets/resources/puzzle_7/IMG-20250716-WA0013.jpg'
