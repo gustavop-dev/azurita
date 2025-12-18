@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import puzzleImage from '@/assets/resources/puzzle_1/IMG-20250228-WA0004.jpg'
+import PuzzleCompleted from '@/components/PuzzleCompleted.vue'
 
 const puzzleCompleted = ref(false)
 const answer = ref('')
@@ -18,6 +19,12 @@ const checkAnswer = () => {
   } else {
     error.value = 'Esa no es la respuesta correcta 🤔'
   }
+}
+
+const retryPuzzle = () => {
+  puzzleCompleted.value = false
+  answer.value = ''
+  error.value = ''
 }
 </script>
 
@@ -80,19 +87,13 @@ const checkAnswer = () => {
       </div>
       
       <!-- Completado -->
-      <div v-else class="text-center p-16">
-        <div class="text-7xl mb-8">🍗</div>
-        <h2 class="text-3xl font-black text-gray-800 mb-4">¡Correcto!</h2>
-        <p class="text-gray-500 text-lg mb-10">Eran alitas, qué rico 😋</p>
-        
-        <router-link
-          to="/"
-          class="inline-block px-10 py-5 rounded-xl font-bold text-lg transition-all transform hover:scale-[1.02]"
-          style="background-color: #a8e6cf; border: 3px solid #000;"
-        >
-          Continuar →
-        </router-link>
-      </div>
+      <PuzzleCompleted
+        v-else
+        emoji="🍗"
+        title="¡Correcto!"
+        message="Eran alitas, qué rico 😋"
+        @retry="retryPuzzle"
+      />
     </div>
   </div>
 </template>

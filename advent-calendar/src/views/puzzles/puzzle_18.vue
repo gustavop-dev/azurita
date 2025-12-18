@@ -1,21 +1,22 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import puzzleImage from '@/assets/resources/puzzle_6/IMG-20250511-WA0019.jpg'
 import PuzzleCompleted from '@/components/PuzzleCompleted.vue'
-import puzzleImage2 from '@/assets/resources/puzzle_6/IMG-20250702-WA0022.jpg'
+import puzzleImage from '@/assets/resources/puzzle_18/IMG-20251101-WA0174.jpg'
 
 const puzzleCompleted = ref(false)
 const answer = ref('')
 const error = ref('')
 
 onMounted(() => {
-  puzzleCompleted.value = localStorage.getItem('puzzle_6_solved') === 'true'
+  puzzleCompleted.value = localStorage.getItem('puzzle_18_solved') === 'true'
 })
 
 const checkAnswer = () => {
-  if (answer.value.toLowerCase().trim() === 'el principito') {
+  const normalized = answer.value.toLowerCase().trim().replace(/[áàäâ]/g, 'a').replace(/[éèëê]/g, 'e').replace(/[íìïî]/g, 'i').replace(/[óòöô]/g, 'o').replace(/[úùüû]/g, 'u')
+  
+  if (normalized.includes('cisneros')) {
     puzzleCompleted.value = true
-    localStorage.setItem('puzzle_6_solved', 'true')
+    localStorage.setItem('puzzle_18_solved', 'true')
     error.value = ''
   } else {
     error.value = 'Esa no es la respuesta correcta 🤔'
@@ -31,56 +32,52 @@ const retryPuzzle = () => {
 
 <template>
   <div class="min-h-screen flex items-center justify-center p-8 bg-christmas-cream">
-    <div class="bg-white rounded-3xl w-full max-w-xl border-4 border-black" style="box-shadow: 10px 10px 0px 0px rgba(42, 157, 143, 0.3);">
+    <div class="bg-white rounded-3xl w-full max-w-xl border-4 border-black" style="box-shadow: 10px 10px 0px 0px rgba(116, 192, 252, 0.3);">
       
       <div v-if="!puzzleCompleted">
         <!-- Header -->
         <div class="text-center pt-10 pb-8 px-10">
-          <span class="text-xs uppercase tracking-widest text-gray-400 font-medium">Día 6</span>
+          <span class="text-xs uppercase tracking-widest text-gray-400 font-medium">Día 18 🏞️</span>
           <h1 class="text-2xl font-black text-gray-800 mt-3">
-            ¿Mi flor favorita?
+            ¿Fuimos a?
           </h1>
         </div>
         
-        <!-- Imágenes -->
-        <div class="px-10 pb-10 space-y-4">
+        <!-- Imagen -->
+        <div class="px-10 pb-6">
           <img 
             :src="puzzleImage" 
-            alt="Flores 1" 
-            class="w-full rounded-2xl"
+            alt="Lugar especial" 
+            class="w-full rounded-2xl border-2 border-gray-200"
           />
-          <img 
-            :src="puzzleImage2" 
-            alt="Flores 2" 
-            class="w-full rounded-2xl"
+        </div>
+        
+        <!-- Pregunta -->
+        <div class="px-10 pb-4">
+          <p class="text-gray-600 text-center mb-4">
+            ¿A dónde fuimos en esta foto?
+          </p>
+          <input
+            v-model="answer"
+            @keyup.enter="checkAnswer"
+            type="text"
+            placeholder="Escribe el nombre del lugar..."
+            class="w-full px-6 py-4 text-lg border-3 border-black rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-200"
           />
+          <p v-if="error" class="text-red-500 text-sm mt-3 text-center">{{ error }}</p>
         </div>
         
         <!-- Separador -->
         <div class="border-t-2 border-gray-100"></div>
         
-        <!-- Form -->
+        <!-- Botón -->
         <div class="p-10">
-          <label class="block text-sm font-semibold text-gray-500 mb-4">Escribe la flor</label>
-          
-          <input
-            v-model="answer"
-            type="text"
-            placeholder="Escribe aquí..."
-            @keyup.enter="checkAnswer"
-            class="w-full px-6 py-5 text-lg border-2 border-gray-200 rounded-xl focus:border-black focus:outline-none transition-all mb-6"
-          />
-          
-          <p v-if="error" class="text-red-500 text-center font-medium py-3 bg-red-50 rounded-xl mb-6">
-            {{ error }}
-          </p>
-          
           <button
             @click="checkAnswer"
             class="w-full py-5 rounded-xl font-bold text-lg transition-all transform hover:scale-[1.01] active:scale-[0.99]"
             style="background-color: #a8e6cf; border: 3px solid #000;"
           >
-            Comprobar
+            Verificar Respuesta
           </button>
         </div>
         
@@ -95,9 +92,9 @@ const retryPuzzle = () => {
       <!-- Completado -->
       <PuzzleCompleted
         v-else
-        emoji="📖"
+        emoji="🏞️"
         title="¡Correcto!"
-        message="El Principito, un libro precioso 💫"
+        message="¡Cisneros! Qué lindo día pasamos allí 💚"
         @retry="retryPuzzle"
       />
     </div>
