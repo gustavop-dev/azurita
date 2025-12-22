@@ -213,11 +213,14 @@ const isPuzzleSolved = (puzzleNumber: number) => {
 // Función para verificar si un puzzle está desbloqueado
 const isPuzzleUnlocked = (puzzleNumber: number, unlockDate: Date) => {
   const now = new Date()
+  // Normalizar las fechas a medianoche en zona horaria local
   const unlockDay = new Date(unlockDate.getFullYear(), unlockDate.getMonth(), unlockDate.getDate())
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-  const dateReached = today >= unlockDay
   
-  // El puzzle 1 solo necesita que la fecha haya llegado
+  // Usar > en lugar de >= para que solo se desbloquee cuando ya pasó el día
+  const dateReached = today > unlockDay
+  
+  // El puzzle 1 solo necesita que la fecha haya llegado (o sea que ya pasó el día anterior)
   if (puzzleNumber === 1) {
     return dateReached
   }
