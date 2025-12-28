@@ -3,18 +3,29 @@ import { ref, onMounted } from 'vue'
 import PuzzleCompleted from '@/components/PuzzleCompleted.vue'
 
 const puzzleCompleted = ref(false)
+const answer = ref('')
+const error = ref('')
 
 onMounted(() => {
   puzzleCompleted.value = localStorage.getItem('puzzle_27_solved') === 'true'
 })
 
-const completePuzzle = () => {
-  localStorage.setItem('puzzle_27_solved', 'true')
-  puzzleCompleted.value = true
+const checkAnswer = () => {
+  const normalized = answer.value.trim()
+  
+  if (normalized === '50') {
+    puzzleCompleted.value = true
+    localStorage.setItem('puzzle_27_solved', 'true')
+    error.value = ''
+  } else {
+    error.value = 'Ese no es el número correcto. Piensa bien 🎂'
+  }
 }
 
 const retryPuzzle = () => {
   puzzleCompleted.value = false
+  answer.value = ''
+  error.value = ''
 }
 </script>
 
@@ -25,15 +36,30 @@ const retryPuzzle = () => {
       <div v-if="!puzzleCompleted">
         <!-- Header -->
         <div class="text-center pt-10 pb-8 px-10">
-          <span class="text-xs uppercase tracking-widest text-gray-400 font-medium">Día 27</span>
+          <span class="text-xs uppercase tracking-widest text-gray-400 font-medium">Día 27 🎂</span>
           <h1 class="text-2xl font-black text-gray-800 mt-3">
-            🎄 Puzzle del día 27 🎄
+            Nuestros cumpleaños
           </h1>
         </div>
         
-        <!-- Contenido -->
-        <div class="px-10 pb-10 text-center">
-          <p class="text-gray-600 text-lg">¡Aquí irá tu puzzle especial!</p>
+        <!-- Pregunta -->
+        <div class="px-10 pb-6">
+          <div class="bg-gradient-to-r from-pink-50 to-red-50 border-2 border-pink-200 rounded-xl p-6">
+            <p class="text-gray-800 text-lg text-center mb-6">
+              ¿Cuál es la diferencia en días entre nuestros cumpleaños?
+            </p>
+            <div class="flex items-center justify-center gap-3">
+              <input
+                v-model="answer"
+                @keyup.enter="checkAnswer"
+                type="number"
+                placeholder="#"
+                class="w-24 px-6 py-4 text-lg text-center border-3 border-black rounded-xl focus:outline-none focus:ring-4 focus:ring-pink-200"
+              />
+              <span class="text-gray-600 text-lg font-medium">días</span>
+            </div>
+            <p v-if="error" class="text-red-500 text-sm mt-4 text-center">{{ error }}</p>
+          </div>
         </div>
         
         <!-- Separador -->
@@ -42,11 +68,11 @@ const retryPuzzle = () => {
         <!-- Botón -->
         <div class="p-10">
           <button
-            @click="completePuzzle"
+            @click="checkAnswer"
             class="w-full py-5 rounded-xl font-bold text-lg transition-all transform hover:scale-[1.01] active:scale-[0.99]"
             style="background-color: #a8e6cf; border: 3px solid #000;"
           >
-            Continuar
+            Verificar Respuesta
           </button>
         </div>
         
@@ -61,9 +87,9 @@ const retryPuzzle = () => {
       <!-- Completado -->
       <PuzzleCompleted
         v-else
-        emoji="🦋"
-        title="¡Completado!"
-        message="Día 27 superado 💕"
+        emoji="🎂"
+        title="¡Correcto!"
+        message="50 días de diferencia entre nuestros cumpleaños 💕"
         @retry="retryPuzzle"
       />
     </div>

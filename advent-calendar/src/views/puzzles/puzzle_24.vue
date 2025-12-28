@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import PuzzleCompleted from '@/components/PuzzleCompleted.vue'
+import audioFile from '@/assets/resources/puzzle_24/Ludovico Einaudi - Experience.mp3'
 
 const puzzleCompleted = ref(false)
+const audioEnded = ref(false)
+const audioRef = ref<HTMLAudioElement | null>(null)
 
 onMounted(() => {
   puzzleCompleted.value = localStorage.getItem('puzzle_24_solved') === 'true'
 })
+
+const onAudioEnded = () => {
+  audioEnded.value = true
+}
 
 const completePuzzle = () => {
   localStorage.setItem('puzzle_24_solved', 'true')
@@ -15,6 +22,10 @@ const completePuzzle = () => {
 
 const retryPuzzle = () => {
   puzzleCompleted.value = false
+  audioEnded.value = false
+  if (audioRef.value) {
+    audioRef.value.currentTime = 0
+  }
 }
 </script>
 
@@ -25,15 +36,63 @@ const retryPuzzle = () => {
       <div v-if="!puzzleCompleted">
         <!-- Header -->
         <div class="text-center pt-10 pb-8 px-10">
-          <span class="text-xs uppercase tracking-widest text-gray-400 font-medium">Día 24 - Nochebuena</span>
+          <span class="text-xs uppercase tracking-widest text-gray-400 font-medium">Día 24 - Nochebuena 🎄</span>
           <h1 class="text-2xl font-black text-gray-800 mt-3">
-            🎄 Puzzle del día 24 🎄
+            Una nota especial
           </h1>
         </div>
         
-        <!-- Contenido -->
-        <div class="px-10 pb-10 text-center">
-          <p class="text-gray-600 text-lg">¡Aquí irá tu puzzle especial!</p>
+        <!-- Mensaje introductorio -->
+        <div class="px-10 pb-8">
+          <div class="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-xl p-6">
+            <p class="text-gray-700 leading-relaxed mb-4">
+              🎵 Antes de continuar, quiero que escuches esta pieza musical. Soy audió filo y en verdad es de las obras más hermosas que he escuchado.
+            </p>
+            <p class="text-gray-600 italic text-sm">
+              La primera vez que la escuché, lloré 💕
+            </p>
+          </div>
+        </div>
+
+        <!-- Reproductor de audio -->
+        <div class="px-10 pb-8">
+          <div class="bg-gray-50 border-2 border-gray-200 rounded-xl p-6">
+            <audio 
+              ref="audioRef"
+              :src="audioFile" 
+              controls 
+              @ended="onAudioEnded"
+              class="w-full"
+            >
+              Tu navegador no soporta el elemento de audio.
+            </audio>
+          </div>
+        </div>
+
+        <!-- Conversación (solo se muestra después de que el audio termine) -->
+        <div v-if="audioEnded" class="px-10 pb-8">
+          <div class="space-y-5">
+            <!-- Mensaje 1 -->
+            <div class="bg-blue-100 border-l-4 border-blue-500 rounded-lg p-4">
+              <p class="text-gray-800 leading-relaxed">
+                Estoy muy seguro de que puedo hacerte feliz, y puedo hacerte feliz para siempre.
+              </p>
+            </div>
+
+            <!-- Mensaje 2 -->
+            <div class="bg-pink-100 border-l-4 border-pink-500 rounded-lg p-4">
+              <p class="text-gray-800 leading-relaxed">
+                ¿Pero por qué harías eso?
+              </p>
+            </div>
+
+            <!-- Mensaje 3 -->
+            <div class="bg-blue-100 border-l-4 border-blue-500 rounded-lg p-4">
+              <p class="text-gray-800 leading-relaxed font-semibold">
+                Porque yo te amo profundamente 💕
+              </p>
+            </div>
+          </div>
         </div>
         
         <!-- Separador -->
@@ -43,10 +102,11 @@ const retryPuzzle = () => {
         <div class="p-10">
           <button
             @click="completePuzzle"
-            class="w-full py-5 rounded-xl font-bold text-lg transition-all transform hover:scale-[1.01] active:scale-[0.99]"
+            :disabled="!audioEnded"
+            class="w-full py-5 rounded-xl font-bold text-lg transition-all transform hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
             style="background-color: #a8e6cf; border: 3px solid #000;"
           >
-            Continuar
+            {{ audioEnded ? 'Continuar' : 'Escucha la pieza primero 🎵' }}
           </button>
         </div>
         
@@ -61,9 +121,9 @@ const retryPuzzle = () => {
       <!-- Completado -->
       <PuzzleCompleted
         v-else
-        emoji="🎄"
+        emoji="💕"
         title="¡Nochebuena!"
-        message="¡Feliz Navidad! 🎅"
+        message="Porque yo te amo profundamente 🎄"
         @retry="retryPuzzle"
       />
     </div>
