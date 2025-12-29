@@ -11,9 +11,9 @@ onMounted(() => {
 })
 
 const checkAnswer = () => {
-  const normalized = answer.value.trim()
+  const value = String(answer.value).trim()
   
-  if (normalized === '50') {
+  if (value === '50') {
     puzzleCompleted.value = true
     localStorage.setItem('puzzle_27_solved', 'true')
     error.value = ''
