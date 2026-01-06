@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import puzzleImage from '@/assets/resources/puzzle_6/IMG-20250511-WA0019.jpg'
-import PuzzleCompleted from '@/components/PuzzleCompleted.vue'
+import puzzleImage1 from '@/assets/resources/puzzle_6/IMG-20250511-WA0019.jpg'
 import puzzleImage2 from '@/assets/resources/puzzle_6/IMG-20250702-WA0022.jpg'
 
 const puzzleCompleted = ref(false)
@@ -13,12 +12,13 @@ onMounted(() => {
 })
 
 const checkAnswer = () => {
-  if (answer.value.toLowerCase().trim() === 'el principito') {
+  const normalizedAnswer = answer.value.toLowerCase().trim()
+  if (normalizedAnswer === 'rosa' || normalizedAnswer === 'rosas') {
     puzzleCompleted.value = true
     localStorage.setItem('puzzle_6_solved', 'true')
     error.value = ''
   } else {
-    error.value = 'Esa no es la respuesta correcta 🤔'
+    error.value = 'Esa no es la flor correcta 🤔'
   }
 }
 
@@ -45,7 +45,7 @@ const retryPuzzle = () => {
         <!-- Imágenes -->
         <div class="px-10 pb-10 space-y-4">
           <img 
-            :src="puzzleImage" 
+            :src="puzzleImage1" 
             alt="Flores 1" 
             class="w-full rounded-2xl"
           />
@@ -93,13 +93,28 @@ const retryPuzzle = () => {
       </div>
       
       <!-- Completado -->
-      <PuzzleCompleted
-        v-else
-        emoji="📖"
-        title="¡Correcto!"
-        message="El Principito, un libro precioso 💫"
-        @retry="retryPuzzle"
-      />
+      <div v-else class="text-center p-16">
+        <div class="text-7xl mb-8">🌹</div>
+        <h2 class="text-3xl font-black text-gray-800 mb-4">¡Correcto!</h2>
+        <p class="text-gray-500 text-lg mb-10">Las rosas, hermosas como tú 🌹</p>
+        
+        <div class="flex gap-4 justify-center">
+          <button
+            @click="retryPuzzle"
+            class="px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-[1.02] bg-gray-100 hover:bg-gray-200"
+            style="border: 3px solid #000;"
+          >
+            🔄 Reintentar
+          </button>
+          <router-link
+            to="/"
+            class="inline-block px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-[1.02]"
+            style="background-color: #a8e6cf; border: 3px solid #000;"
+          >
+            Continuar →
+          </router-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>

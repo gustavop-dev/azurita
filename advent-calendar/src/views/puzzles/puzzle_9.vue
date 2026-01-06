@@ -13,6 +13,10 @@ const completePuzzle = () => {
   localStorage.setItem('puzzle_9_solved', 'true')
   puzzleCompleted.value = true
 }
+
+const retryPuzzle = () => {
+  puzzleCompleted.value = false
+}
 </script>
 
 <template>
@@ -70,13 +74,22 @@ const completePuzzle = () => {
         <h2 class="text-3xl font-black text-gray-800 mb-4">Qué ternura</h2>
         <p class="text-gray-500 text-lg mb-10">Momentos que derriten el corazón 💕</p>
         
-        <router-link
-          to="/"
-          class="inline-block px-10 py-5 rounded-xl font-bold text-lg transition-all transform hover:scale-[1.02]"
-          style="background-color: #a8e6cf; border: 3px solid #000;"
-        >
-          Continuar →
-        </router-link>
+        <div class="flex gap-4 justify-center">
+          <button
+            @click="retryPuzzle"
+            class="px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-[1.02] bg-gray-100 hover:bg-gray-200"
+            style="border: 3px solid #000;"
+          >
+            🔄 Reintentar
+          </button>
+          <router-link
+            to="/"
+            class="inline-block px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-[1.02]"
+            style="background-color: #a8e6cf; border: 3px solid #000;"
+          >
+            Continuar →
+          </router-link>
+        </div>
       </div>
     </div>
   </div>

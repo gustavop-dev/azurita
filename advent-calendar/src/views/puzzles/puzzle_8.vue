@@ -2,38 +2,21 @@
 import { ref, onMounted } from 'vue'
 import puzzleImage1 from '@/assets/resources/puzzle_8/IMG-20250723-WA0022.jpg'
 import puzzleImage2 from '@/assets/resources/puzzle_8/IMG-20250726-WA0020.jpg'
-import PuzzleCompleted from '@/components/PuzzleCompleted.vue'
 
 const puzzleCompleted = ref(false)
 const answer = ref('')
 const userResponse = ref('')
-const error = ref('')
 
 onMounted(() => {
   puzzleCompleted.value = localStorage.getItem('puzzle_8_solved') === 'true'
   userResponse.value = localStorage.getItem('puzzle_8_response') || ''
 })
 
-const checkAnswer = () => {
-  const normalizedAnswer = answer.value.toLowerCase().trim()
-  if (normalizedAnswer === 'tu') {
-    puzzleCompleted.value = true
-    localStorage.setItem('puzzle_8_solved', 'true')
-    error.value = ''
-  } else {
-    error.value = 'Esa no es la respuesta correcta 🤔'
-  }
-}
-
-const retryPuzzle = () => {
-  puzzleCompleted.value = false
-  answer.value = ''
-  error.value = ''
-}
-
 const saveAnswer = () => {
   if (answer.value.trim().length > 0) {
-    checkAnswer()
+    puzzleCompleted.value = true
+    localStorage.setItem('puzzle_8_solved', 'true')
+    localStorage.setItem('puzzle_8_response', answer.value)
     userResponse.value = answer.value
   }
 }
@@ -89,7 +72,6 @@ const saveAnswer = () => {
           >
             Guardar
           </button>
-          <p v-if="error" class="text-red-500 mt-2">{{ error }}</p>
         </div>
         
         <!-- Volver -->
@@ -101,13 +83,24 @@ const saveAnswer = () => {
       </div>
       
       <!-- Completado -->
-      <PuzzleCompleted
-        v-else
-        emoji="💝"
-        title="¡Correcto!"
-        message="Tú eres mi regalo favorito 💕"
-        @retry="retryPuzzle"
-      />
+      <div v-else class="p-16">
+        <div class="text-center mb-8">
+          <div class="text-7xl mb-6">💍</div>
+          <h2 class="text-3xl font-black text-gray-800 mb-4">Guardado</h2>
+        </div>
+        
+        <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+          <p class="text-gray-700 italic leading-relaxed">{{ userResponse }}</p>
+        </div>
+        
+        <router-link
+          to="/"
+          class="block text-center px-10 py-5 rounded-xl font-bold text-lg transition-all transform hover:scale-[1.02]"
+          style="background-color: #a8e6cf; border: 3px solid #000;"
+        >
+          Continuar →
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
