@@ -1,13 +1,13 @@
 {
-  "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js": {
-    "file": "assets/PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js",
+  "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.DpMJ_DoG.js": {
+    "file": "assets/PuzzleCompleted.vue_vue_type_script_setup_true_lang.DpMJ_DoG.js",
     "name": "PuzzleCompleted.vue_vue_type_script_setup_true_lang",
     "imports": [
       "index.html"
     ]
   },
   "index.html": {
-    "file": "assets/index.DhIHixpX.js",
+    "file": "assets/index.CCP_msbi.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -169,59 +169,56 @@
     "src": "src/assets/resources/puzzle_9/IMG-20250814-WA0036.jpg"
   },
   "src/views/puzzles/puzzle_1.vue": {
-    "file": "assets/puzzle_1.C56WAJhe.js",
+    "file": "assets/puzzle_1.C2vIOT84.js",
     "name": "puzzle_1",
     "src": "src/views/puzzles/puzzle_1.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.DpMJ_DoG.js"
     ],
     "assets": [
       "assets/IMG-20250228-WA0004.wr9X3_yO.jpg"
     ]
   },
   "src/views/puzzles/puzzle_10.vue": {
-    "file": "assets/puzzle_10.B_CMqkDR.js",
+    "file": "assets/puzzle_10.BsxJYWhc.js",
     "name": "puzzle_10",
     "src": "src/views/puzzles/puzzle_10.vue",
     "isDynamicEntry": true,
     "imports": [
-      "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "index.html"
     ],
     "assets": [
       "assets/IMG-20250826-WA0017.xF4rXsdC.jpg"
     ]
   },
   "src/views/puzzles/puzzle_11.vue": {
-    "file": "assets/puzzle_11.CiHT3fj9.js",
+    "file": "assets/puzzle_11.lnDp-q_w.js",
     "name": "puzzle_11",
     "src": "src/views/puzzles/puzzle_11.vue",
     "isDynamicEntry": true,
     "imports": [
-      "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "index.html"
     ],
     "assets": [
       "assets/IMG-20251006-WA0003.DaikYYcQ.jpg"
     ]
   },
   "src/views/puzzles/puzzle_12.vue": {
-    "file": "assets/puzzle_12.CXELeYxB.js",
+    "file": "assets/puzzle_12.DJfs2X6W.js",
     "name": "puzzle_12",
     "src": "src/views/puzzles/puzzle_12.vue",
     "isDynamicEntry": true,
     "imports": [
-      "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "index.html"
     ],
     "assets": [
       "assets/IMG-20251101-WA0108.Dk_Yw-ox.jpg"
     ]
   },
   "src/views/puzzles/puzzle_13.vue": {
-    "file": "assets/puzzle_13.CA1qyDvw.js",
+    "file": "assets/puzzle_13.O4ESBK8n.js",
     "name": "puzzle_13",
     "src": "src/views/puzzles/puzzle_13.vue",
     "isDynamicEntry": true,
@@ -230,7 +227,7 @@
     ]
   },
   "src/views/puzzles/puzzle_14.vue": {
-    "file": "assets/puzzle_14.Ba88zdDO.js",
+    "file": "assets/puzzle_14.D1LitIz9.js",
     "name": "puzzle_14",
     "src": "src/views/puzzles/puzzle_14.vue",
     "isDynamicEntry": true,
@@ -242,79 +239,79 @@
     ]
   },
   "src/views/puzzles/puzzle_15.vue": {
-    "file": "assets/puzzle_15.DKeEyAPS.js",
+    "file": "assets/puzzle_15.npe6TkIG.js",
     "name": "puzzle_15",
     "src": "src/views/puzzles/puzzle_15.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.DpMJ_DoG.js"
     ],
     "assets": [
       "assets/IMG-20250826-WA0232.BI6bOuTg.jpg"
     ]
   },
   "src/views/puzzles/puzzle_16.vue": {
-    "file": "assets/puzzle_16.MaS2kmwg.js",
+    "file": "assets/puzzle_16.DVTpH8gS.js",
     "name": "puzzle_16",
     "src": "src/views/puzzles/puzzle_16.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.DpMJ_DoG.js"
     ]
   },
   "src/views/puzzles/puzzle_17.vue": {
-    "file": "assets/puzzle_17.CVkDgAv-.js",
+    "file": "assets/puzzle_17.B8dM19O5.js",
     "name": "puzzle_17",
     "src": "src/views/puzzles/puzzle_17.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.DpMJ_DoG.js"
     ]
   },
   "src/views/puzzles/puzzle_18.vue": {
-    "file": "assets/puzzle_18.CdUurp7H.js",
+    "file": "assets/puzzle_18.-oD1jvsF.js",
     "name": "puzzle_18",
     "src": "src/views/puzzles/puzzle_18.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.DpMJ_DoG.js"
     ],
     "assets": [
       "assets/IMG-20251101-WA0174.BZF42w9Z.jpg"
     ]
   },
   "src/views/puzzles/puzzle_19.vue": {
-    "file": "assets/puzzle_19.D6pdfqaC.js",
+    "file": "assets/puzzle_19.BeQDB9pn.js",
     "name": "puzzle_19",
     "src": "src/views/puzzles/puzzle_19.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.DpMJ_DoG.js"
     ],
     "assets": [
       "assets/IMG-20251101-WA0172.BYg4rHRE.jpg"
     ]
   },
   "src/views/puzzles/puzzle_2.vue": {
-    "file": "assets/puzzle_2.DR9854KY.js",
+    "file": "assets/puzzle_2.DaNxH8m7.js",
     "name": "puzzle_2",
     "src": "src/views/puzzles/puzzle_2.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.DpMJ_DoG.js"
     ],
     "assets": [
       "assets/IMG-20250228-WA0064.BgEfP1Zx.jpg"
     ]
   },
   "src/views/puzzles/puzzle_20.vue": {
-    "file": "assets/puzzle_20.C2e5S5M-.js",
+    "file": "assets/puzzle_20.pJJEHeuy.js",
     "name": "puzzle_20",
     "src": "src/views/puzzles/puzzle_20.vue",
     "isDynamicEntry": true,
@@ -326,7 +323,7 @@
     ]
   },
   "src/views/puzzles/puzzle_21.vue": {
-    "file": "assets/puzzle_21.C-SamrZM.js",
+    "file": "assets/puzzle_21.C0RL2m3Z.js",
     "name": "puzzle_21",
     "src": "src/views/puzzles/puzzle_21.vue",
     "isDynamicEntry": true,
@@ -338,17 +335,17 @@
     ]
   },
   "src/views/puzzles/puzzle_22.vue": {
-    "file": "assets/puzzle_22.DZPaV8Hv.js",
+    "file": "assets/puzzle_22.Bs0mk1ur.js",
     "name": "puzzle_22",
     "src": "src/views/puzzles/puzzle_22.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.DpMJ_DoG.js"
     ]
   },
   "src/views/puzzles/puzzle_23.vue": {
-    "file": "assets/puzzle_23.ByvVcT69.js",
+    "file": "assets/puzzle_23.CjPSQBKC.js",
     "name": "puzzle_23",
     "src": "src/views/puzzles/puzzle_23.vue",
     "isDynamicEntry": true,
@@ -360,12 +357,12 @@
     ]
   },
   "src/views/puzzles/puzzle_24.vue": {
-    "file": "assets/puzzle_24.BciCes3h.js",
+    "file": "assets/puzzle_24.C6EmpwJO.js",
     "name": "puzzle_24",
     "src": "src/views/puzzles/puzzle_24.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js",
+      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.DpMJ_DoG.js",
       "index.html"
     ],
     "assets": [
@@ -373,7 +370,7 @@
     ]
   },
   "src/views/puzzles/puzzle_25.vue": {
-    "file": "assets/puzzle_25.CYa3mQev.js",
+    "file": "assets/puzzle_25.D0UYhVtD.js",
     "name": "puzzle_25",
     "src": "src/views/puzzles/puzzle_25.vue",
     "isDynamicEntry": true,
@@ -385,7 +382,7 @@
     ]
   },
   "src/views/puzzles/puzzle_26.vue": {
-    "file": "assets/puzzle_26.CWWRAvl3.js",
+    "file": "assets/puzzle_26.DPPgqiM4.js",
     "name": "puzzle_26",
     "src": "src/views/puzzles/puzzle_26.vue",
     "isDynamicEntry": true,
@@ -397,27 +394,27 @@
     ]
   },
   "src/views/puzzles/puzzle_27.vue": {
-    "file": "assets/puzzle_27.DOyhFzYl.js",
+    "file": "assets/puzzle_27.DEYUuJXs.js",
     "name": "puzzle_27",
     "src": "src/views/puzzles/puzzle_27.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.DpMJ_DoG.js"
     ]
   },
   "src/views/puzzles/puzzle_28.vue": {
-    "file": "assets/puzzle_28.ITKmJJWx.js",
+    "file": "assets/puzzle_28.DU9d8luO.js",
     "name": "puzzle_28",
     "src": "src/views/puzzles/puzzle_28.vue",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.DpMJ_DoG.js"
     ]
   },
   "src/views/puzzles/puzzle_29.vue": {
-    "file": "assets/puzzle_29.CWdRc4Xs.js",
+    "file": "assets/puzzle_29.BqyZIPAs.js",
     "name": "puzzle_29",
     "src": "src/views/puzzles/puzzle_29.vue",
     "isDynamicEntry": true,
@@ -429,17 +426,16 @@
     ]
   },
   "src/views/puzzles/puzzle_3.vue": {
-    "file": "assets/puzzle_3.BRCLFC2b.js",
+    "file": "assets/puzzle_3.CQgjaS6V.js",
     "name": "puzzle_3",
     "src": "src/views/puzzles/puzzle_3.vue",
     "isDynamicEntry": true,
     "imports": [
-      "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "index.html"
     ]
   },
   "src/views/puzzles/puzzle_30.vue": {
-    "file": "assets/puzzle_30.D7vrvABc.js",
+    "file": "assets/puzzle_30.8xjEaDwF.js",
     "name": "puzzle_30",
     "src": "src/views/puzzles/puzzle_30.vue",
     "isDynamicEntry": true,
@@ -451,7 +447,7 @@
     ]
   },
   "src/views/puzzles/puzzle_31.vue": {
-    "file": "assets/puzzle_31.BRbMSdNk.js",
+    "file": "assets/puzzle_31.CG98FN3l.js",
     "name": "puzzle_31",
     "src": "src/views/puzzles/puzzle_31.vue",
     "isDynamicEntry": true,
@@ -463,39 +459,36 @@
     ]
   },
   "src/views/puzzles/puzzle_4.vue": {
-    "file": "assets/puzzle_4.Dcgvj6dA.js",
+    "file": "assets/puzzle_4.D-xIwc3r.js",
     "name": "puzzle_4",
     "src": "src/views/puzzles/puzzle_4.vue",
     "isDynamicEntry": true,
     "imports": [
-      "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "index.html"
     ],
     "assets": [
       "assets/IMG-20250412-WA0099.H_0DcEQJ.jpg"
     ]
   },
   "src/views/puzzles/puzzle_5.vue": {
-    "file": "assets/puzzle_5.CPEjPztm.js",
+    "file": "assets/puzzle_5.Cmo6zWlc.js",
     "name": "puzzle_5",
     "src": "src/views/puzzles/puzzle_5.vue",
     "isDynamicEntry": true,
     "imports": [
-      "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "index.html"
     ],
     "assets": [
       "assets/IMG-20250406-WA0007.Bpo53CMB.jpg"
     ]
   },
   "src/views/puzzles/puzzle_6.vue": {
-    "file": "assets/puzzle_6.CuNQsA1C.js",
+    "file": "assets/puzzle_6.D0HSWgMg.js",
     "name": "puzzle_6",
     "src": "src/views/puzzles/puzzle_6.vue",
     "isDynamicEntry": true,
     "imports": [
-      "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "index.html"
     ],
     "assets": [
       "assets/IMG-20250511-WA0019.Beaz6fxz.jpg",
@@ -503,29 +496,27 @@
     ]
   },
   "src/views/puzzles/puzzle_7.vue": {
-    "file": "assets/puzzle_7.DT4dnPBE.js",
+    "file": "assets/puzzle_7.rhHUu6t4.js",
     "name": "puzzle_7",
     "src": "src/views/puzzles/puzzle_7.vue",
     "isDynamicEntry": true,
     "imports": [
-      "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "index.html"
     ],
     "assets": [
-      "assets/IMG-20250716-WA0001.CLzexK_r.jpg",
       "assets/IMG-20250714-WA0008.B2HQDyw1.jpg",
+      "assets/IMG-20250716-WA0001.CLzexK_r.jpg",
       "assets/IMG-20250716-WA0013.mpiT367X.jpg",
       "assets/IMG-20250716-WA0018.BKCKIagM.jpg"
     ]
   },
   "src/views/puzzles/puzzle_8.vue": {
-    "file": "assets/puzzle_8.CZzNPFPX.js",
+    "file": "assets/puzzle_8.-vg1PyYG.js",
     "name": "puzzle_8",
     "src": "src/views/puzzles/puzzle_8.vue",
     "isDynamicEntry": true,
     "imports": [
-      "index.html",
-      "_PuzzleCompleted.vue_vue_type_script_setup_true_lang.Crkxywyg.js"
+      "index.html"
     ],
     "assets": [
       "assets/IMG-20250723-WA0022.C35o_LMn.jpg",
@@ -533,7 +524,7 @@
     ]
   },
   "src/views/puzzles/puzzle_9.vue": {
-    "file": "assets/puzzle_9.DFCrLq-t.js",
+    "file": "assets/puzzle_9.CgRbdmy7.js",
     "name": "puzzle_9",
     "src": "src/views/puzzles/puzzle_9.vue",
     "isDynamicEntry": true,
