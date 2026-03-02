@@ -8,9 +8,14 @@ Group=www-data
 WorkingDirectory=/home/ryzepeck/webapps/azurita
 Environment="PATH=/home/ryzepeck/webapps/azurita/venv/bin"
 ExecStart=/home/ryzepeck/webapps/azurita/venv/bin/gunicorn \
-          --workers 3 \
+          --access-logfile - \
+          --workers 2 \
+          --max-requests 800 \
+          --max-requests-jitter 80 \
           --bind unix:/home/ryzepeck/webapps/azurita/azurita.sock \
           backend.wsgi:application
+Restart=on-failure
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
