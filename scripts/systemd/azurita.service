@@ -1,0 +1,22 @@
+[Unit]
+Description=Gunicorn daemon for azurita
+After=network.target
+
+[Service]
+Type=notify
+User=ryzepeck
+Group=www-data
+WorkingDirectory=/home/ryzepeck/webapps/azurita/backend
+ExecStart=/home/ryzepeck/webapps/azurita/venv/bin/gunicorn \
+    --workers 2 \
+    --max-requests 800 \
+    --max-requests-jitter 80 \
+    --timeout 120 \
+    --bind unix:/home/ryzepeck/webapps/azurita/azurita.sock \
+    azurita_project.wsgi:application
+Environment="DJANGO_SETTINGS_MODULE=azurita_project.settings"
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

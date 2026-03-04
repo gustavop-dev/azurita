@@ -17,7 +17,7 @@ bash ~/scripts/quick-status.sh
 ## Deploy Steps
 
 // turbo
-2. Pull the latest code from master:
+2. Pull the latest code from main:
 ```bash
 cd /home/ryzepeck/webapps/azurita && git pull origin main
 ```
@@ -35,21 +35,6 @@ cd /home/ryzepeck/webapps/azurita && source venv/bin/activate && python manage.p
 5. Restart services:
 ```bash
 sudo systemctl restart azurita && sudo systemctl restart azurita-huey
-```
-
-## Post-Deploy Verification
-
-// turbo
-6. Run post-deploy check:
-```bash
-bash ~/scripts/post-deploy-check.sh azurita
-```
-
-7. If something fails, check the logs:
-```bash
-sudo journalctl -u azurita --no-pager -n 30
-sudo journalctl -u azurita-huey --no-pager -n 30
-sudo tail -20 /var/log/nginx/error.log
 ```
 
 ## Architecture Reference

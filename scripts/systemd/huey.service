@@ -1,0 +1,17 @@
+[Unit]
+Description=Huey Task Queue for azurita
+After=network.target redis.service
+
+[Service]
+Type=simple
+User=ryzepeck
+Group=www-data
+WorkingDirectory=/home/ryzepeck/webapps/azurita
+ExecStart=/home/ryzepeck/webapps/azurita/venv/bin/python manage.py run_huey --workers 1
+Environment="DJANGO_SETTINGS_MODULE=azurita_project.settings"
+Environment="PYTHONPATH=/home/ryzepeck/webapps/azurita/backend"
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
