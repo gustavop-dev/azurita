@@ -12,11 +12,11 @@ Instructions for deploying azurita to production.
 
 ---
 
-## Deploy from master
+## Deploy from main
 
 ```bash
 cd /home/ryzepeck/webapps/azurita
-git pull origin master
+git pull origin main
 
 # Backend
 cd backend
