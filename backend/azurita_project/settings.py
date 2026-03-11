@@ -102,6 +102,21 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
+STORAGES = {
+    'default': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+    },
+    'staticfiles': {
+        'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
+    },
+    'dbbackup': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+        'OPTIONS': {
+            'location': config('BACKUP_STORAGE_PATH', default='/var/backups/azurita'),
+        },
+    },
+}
+
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -117,10 +132,7 @@ HUEY = RedisHuey(
 # ---------------------------------------------------------------------------
 # Backups (django-dbbackup) — SQLite supported
 # ---------------------------------------------------------------------------
-DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-DBBACKUP_STORAGE_OPTIONS = {
-    'location': config('BACKUP_STORAGE_PATH', default='/var/backups/azurita'),
-}
+# Storage is configured via STORAGES['dbbackup'] above (new-style API).
 DBBACKUP_CLEANUP_KEEP = 4
 
 # ---------------------------------------------------------------------------
