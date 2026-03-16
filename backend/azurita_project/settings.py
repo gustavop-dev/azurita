@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Operations
     'dbbackup',
     'huey.contrib.djhuey',
+    'azurita_project.apps.AzuritaProjectConfig',
 ]
 
 MIDDLEWARE = [
