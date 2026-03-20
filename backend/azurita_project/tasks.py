@@ -4,6 +4,7 @@ Infrastructure tasks scheduled via Huey:
 - scheduled_backup: SQLite DB backup weekly (Monday at 03:00 AM UTC)
 - silk_garbage_collection: Daily cleanup of Silk data (04:30 AM)
 - weekly_slow_queries_report: Thursday 07:00 AM performance report
+- silk_reports_cleanup: Monthly cleanup of old Silk reports (1st of month 05:45 AM)
 """
 
 import logging
@@ -86,3 +87,25 @@ def weekly_slow_queries_report():
     reports_dir.mkdir(parents=True, exist_ok=True)
     (reports_dir / f'silk-report-{timezone.now():%Y-%m-%d}.log').write_text('\n'.join(lines) + '\n')
     logger.info('Weekly report generated. Slow: %d, N+1: %d', slow.count(), n1.count())
+
+
+@periodic_task(crontab(day='1', hour='5', minute='45'))
+def silk_reports_cleanup():
+    """Monthly cleanup of Silk report files older than 6 months."""
+    if not getattr(settings, 'ENABLE_SILK', False):
+        return
+
+    reports_dir = Path(settings.BASE_DIR) / 'logs' / 'silk-reports'
+    if not reports_dir.exists():
+        return
+
+    cutoff = timezone.now() - timedelta(days=180)
+    deleted = 0
+
+    for log_file in reports_dir.glob('silk-report-*.log'):
+        if log_file.stat().st_mtime < cutoff.timestamp():
+            log_file.unlink()
+            deleted += 1
+
+    if deleted:
+        logger.info('silk_reports_cleanup: removed %d old reports', deleted)
