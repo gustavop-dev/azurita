@@ -8,27 +8,26 @@ trigger: always_on
 flowchart TD
     Root[Project Root]
     Root --> Backend[backend/]
-    Root --> Frontend[frontend/]
+    Root --> AdventCal[advent-calendar/]
+    Root --> Templates[templates/]
+    Root --> Static[static/frontend/]
+    Root --> Puzzles[puzzles/]
     Root --> Docs[docs/]
-    Root --> Tasks[tasks/]
     Root --> Scripts[scripts/]
     Root --> Windsurf[.windsurf/rules/]
     Root --> GitHub[.github/workflows/]
 
-    Backend --> BContent[content/ — Django app]
-    Backend --> BProject[projectapp/ — Django project]
-    Backend --> BMedia[media/]
+    Backend --> BProject[azurita_project/ — settings, urls, views, tasks]
+    Backend --> BConftest[conftest.py + pytest.ini]
+    Backend --> BLogs[logs/]
 
-    Frontend --> FPages[pages/]
-    Frontend --> FComponents[components/]
-    Frontend --> FStores[stores/]
-    Frontend --> FComposables[composables/]
-    Frontend --> FE2E[e2e/ — Playwright]
-    Frontend --> FTest[test/ — Jest]
-
-    Docs --> Methodology[methodology/]
-    Tasks --> ActiveCtx[active_context.md]
-    Tasks --> TasksPlan[tasks_plan.md]
-
-    Windsurf --> WMethodology[methodology/ — Plan, Implement, Debug, Memory]
+    AdventCal --> AdventSrc[src/ — Vue components, stores, router, views]
+    AdventCal --> AdventPkg[package.json + vite.config.ts]
 ```
+
+**Key invariants:**
+- Frontend lives in `advent-calendar/` (NOT `frontend/`). Built with Vite to `static/frontend/`.
+- Django project module is `azurita_project/` (NOT `projectapp/`).
+- `manage.py` and `venv/` are at the repo root, not inside `backend/`.
+- `puzzles/` is a stub Django app — no business logic yet.
+- `static/frontend/` and `backend/db.sqlite3` are gitignored generated artifacts.

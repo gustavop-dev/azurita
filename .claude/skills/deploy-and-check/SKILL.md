@@ -29,17 +29,17 @@ cd /home/ryzepeck/webapps/azurita && git pull origin main
 
 3. Install backend dependencies and run migrations:
 ```bash
-cd /home/ryzepeck/webapps/azurita/backend && source venv/bin/activate && pip install -r requirements.txt && DJANGO_SETTINGS_MODULE=azurita_project.settings_prod python manage.py migrate
+cd /home/ryzepeck/webapps/azurita && source venv/bin/activate && pip install -r requirements.txt && DJANGO_ENV=production python manage.py migrate
 ```
 
-4. Build the frontend (Nuxt generate + copy to Django static):
+4. Build the frontend (Vue 3 Vite SPA):
 ```bash
-cd /home/ryzepeck/webapps/azurita/frontend && npm ci && npm run build
+npm --prefix /home/ryzepeck/webapps/azurita/advent-calendar ci && npm --prefix /home/ryzepeck/webapps/azurita/advent-calendar run build
 ```
 
 5. Collect static files:
 ```bash
-cd /home/ryzepeck/webapps/azurita/backend && source venv/bin/activate && DJANGO_SETTINGS_MODULE=azurita_project.settings_prod python manage.py collectstatic --noinput
+cd /home/ryzepeck/webapps/azurita && source venv/bin/activate && DJANGO_ENV=production python manage.py collectstatic --noinput
 ```
 
 6. Restart services:
@@ -65,24 +65,22 @@ sudo tail -20 /var/log/nginx/error.log
 ## Architecture Reference
 
 - **Domain**: `azurita.projectapp.co` / `www.azurita.projectapp.co`
-- **Backend**: Django (`azurita` module), settings selected via `DJANGO_SETTINGS_MODULE=azurita_project.settings_prod` in systemd unit
-- **Frontend**: Nuxt 3 SSG → `backend/static/frontend/` + Django `serve_nuxt` catch-all view
-- **Services**: `azurita.service` (Gunicorn via socket), `azurita.socket`, `azurita-huey.service`
+- **Backend**: Django (`azurita_project` module), `DJANGO_SETTINGS_MODULE=azurita_project.settings`; production mode activated by `DJANGO_ENV=production` in server `.env`
+- **Frontend**: Vue 3 Vite SPA (`advent-calendar/`) → `static/frontend/` + Django `index` catch-all view
+- **Services**: `azurita.service` (Gunicorn), `azurita-huey.service`
 - **Nginx**: `/etc/nginx/sites-available/azurita`
 - **Socket**: `/home/ryzepeck/webapps/azurita/azurita.sock`
-- **Static**: `/home/ryzepeck/webapps/azurita/backend/staticfiles/`
-- **Media**: `/home/ryzepeck/webapps/azurita/backend/media/`
-- **Resource limits**: MemoryMax=250M, CPUQuota=40%, OOMScoreAdjust=300
+- **Static**: `/home/ryzepeck/webapps/azurita/staticfiles/`
 
 ## Cleanup
 
 9. Remove `node_modules` to save disk space (frontend already compiled):
 ```bash
-rm -rf /home/ryzepeck/webapps/azurita/frontend/node_modules
+rm -rf /home/ryzepeck/webapps/azurita/advent-calendar/node_modules
 ```
 
 ## Notes
 
 - VPS operations scripts live in `/home/ryzepeck/webapps/ops/vps/scripts/`.
-- Frontend uses `npm run build` which runs `nuxi generate` with `NUXT_APP_CDN_URL=/static/frontend/` and copies output to `backend/static/frontend/`.
-- `DJANGO_SETTINGS_MODULE=azurita_project.settings_prod` must be set for migrate and collectstatic commands (manage.py defaults to settings_dev).
+- Frontend uses `npm run build` (Vite) which emits assets to `static/frontend/`.
+- `manage.py` defaults to `DJANGO_SETTINGS_MODULE=azurita_project.settings`. Production settings are activated by `DJANGO_ENV=production` (read by python-decouple from the server `.env` file). Never pass `azurita_project.settings_prod` as the settings module — it is not a standalone module, it is auto-imported by `settings.py`.

@@ -3,20 +3,18 @@
 ## Project Identity
 
 ### Codex Runtime Surfaces
-- **Primary instructions**: `AGENTS.md` (root scope) + `backend/AGENTS.md` + `frontend/AGENTS.md`
+- **Primary instructions**: `AGENTS.md` (root scope) + `backend/AGENTS.md`
 - **Skills (canonical)**: `.agents/skills/<skill>/SKILL.md` + `agents/openai.yaml`
 - **Project config**: `.codex/config.toml`
 
 - **Name**: Azurita
 - **Domain**: `azurita.projectapp.co` / `www.azurita.projectapp.co`
-- **Stack**: Django 5.2.8 + DRF (backend) / Vue 3 + Vite SPA (`advent-calendar/`) / SQLite / Redis / Huey
+- **Stack**: Django 5.2.8 (no DRF yet) / Vue 3 + Vite SPA (`advent-calendar/`) / SQLite / Redis / Huey
 - **Server path**: `/home/ryzepeck/webapps/azurita`
-- **Services**: `azurita.service` (Gunicorn), `azurita.socket`, `azurita-huey.service`
-- **Settings module**: `DJANGO_SETTINGS_MODULE=azurita_project.settings_prod`
+- **Services**: `azurita.service` (Gunicorn), `azurita-huey.service`
+- **Settings module**: `DJANGO_SETTINGS_MODULE=azurita_project.settings` (production via `DJANGO_ENV=production`)
 - **Nginx**: `/etc/nginx/sites-available/azurita`
-- **Static**: `/home/ryzepeck/webapps/azurita/backend/staticfiles/`
-- **Media**: `/home/ryzepeck/webapps/azurita/backend/media/`
-- **Resource limits**: MemoryMax=250M, CPUQuota=40%, OOMScoreAdjust=300
+- **Static**: `/home/ryzepeck/webapps/azurita/staticfiles/`
 
 ---
 
@@ -376,7 +374,7 @@ Full reference: `docs/TESTING_QUALITY_STANDARDS.md`
 - `azurita_project/settings.py` — base (DEBUG defaults from env, dev-friendly).
 - `azurita_project/settings_dev.py` — `DEBUG=True`, `ALLOWED_HOSTS=['*']`.
 - `azurita_project/settings_prod.py` — `DEBUG=False` hardcoded, requires `DJANGO_SECRET_KEY` + `DJANGO_ALLOWED_HOSTS` env, full security headers (HSTS 1y, SECURE_SSL_REDIRECT, etc.).
-- The systemd unit selects via `DJANGO_SETTINGS_MODULE=azurita_project.settings_prod`.
+- `manage.py` and the Huey systemd unit both use `DJANGO_SETTINGS_MODULE=azurita_project.settings`; production mode is activated by `DJANGO_ENV=production` (read by python-decouple from the server `.env`). `settings_prod.py` is not a standalone settings module — it is auto-imported by `settings.py`.
 
 #### Frontend: Vue 3 + TypeScript + Vite (in `advent-calendar/`)
 - The frontend source lives in `advent-calendar/`, **not** in `frontend/`. Treat `advent-calendar/` as the canonical frontend path for this project.

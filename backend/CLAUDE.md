@@ -1,9 +1,9 @@
 # Backend Rules — Azurita
 
 ## Stack And Scope
-- Django 5.2 + DRF backend, Python 3.12.
+- Django 5.2 backend, Python 3.12. No DRF or REST endpoints yet — the only view is the SPA shell (`index`).
 - The backend is **minimal**: a single SPA-shell view, a `/api/health/` endpoint, an admin site, and Huey periodic tasks. There is **no business-logic Django app yet**; `puzzles/` is an empty stub.
-- Production settings module: `azurita_project.settings_prod`.
+- Settings module: `azurita_project.settings` (always). Production mode is activated by `DJANGO_ENV=production` (read by python-decouple from `.env`). Never use `settings_prod` as the module name — it is auto-imported by `settings.py`.
 - Database: **SQLite** at `backend/db.sqlite3`. Backed up weekly by `django-dbbackup` via Huey.
 
 ## Project Conventions

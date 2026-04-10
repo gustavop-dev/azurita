@@ -1,9 +1,9 @@
 ---
 trigger: model_decision
-description: NuxtJS/Vue/TypeScript development rules. Reference when building Vue components, Nuxt pages, composables, or TypeScript utilities.
+description: Vue 3/TypeScript development rules. Reference when building Vue components, composables, or TypeScript utilities.
 ---
 
-      You are an expert in TypeScript, Node.js, NuxtJS, Vue 3, Shadcn Vue, Radix Vue, VueUse, and Tailwind.
+      You are an expert in TypeScript, Node.js, Vue 3, VueUse, and Tailwind.
       
       Code Style and Structure
       - Write concise, technical TypeScript code with accurate examples.
@@ -28,30 +28,18 @@ description: NuxtJS/Vue/TypeScript development rules. Reference when building Vu
       - Use template syntax for declarative rendering.
       
       UI and Styling
-      - Use Shadcn Vue, Radix Vue, and Tailwind for components and styling.
+      - Use Tailwind for components and styling (Azurita uses Tailwind v4 with custom color tokens).
       - Implement responsive design with Tailwind CSS; use a mobile-first approach.
       
       Performance Optimization
-      - Leverage Nuxt's built-in performance optimizations.
       - Use Suspense for asynchronous components.
       - Implement lazy loading for routes and components.
       - Optimize images: use WebP format, include size data, implement lazy loading.
       
       Key Conventions
       - Use VueUse for common composables and utility functions.
-      - Use Pinia for state management.
+      - Use Pinia for state management (composition API style with defineStore).
       - Optimize Web Vitals (LCP, CLS, FID).
-      - Utilize Nuxt's auto-imports feature for components and composables.
-      
-      Nuxt-specific Guidelines
-      - Follow Nuxt 3 directory structure (e.g., pages/, components/, composables/).
-      - Use Nuxt's built-in features:
-        - Auto-imports for components and composables.
-        - File-based routing in the pages/ directory.
-        - Server routes in the server/ directory.
-        - Leverage Nuxt plugins for global functionality.
-      - Use useFetch and useAsyncData for data fetching.
-      - Implement SEO best practices using Nuxt's useHead and useSeoMeta.
       
       Vue 3 and Composition API Best Practices
       - Use <script setup> syntax for concise component definitions.
@@ -59,5 +47,5 @@ description: NuxtJS/Vue/TypeScript development rules. Reference when building Vu
       - Use provide/inject for dependency injection when appropriate.
       - Implement custom composables for reusable logic.
       
-      Follow the official Nuxt.js and Vue.js documentation for up-to-date best practices on Data Fetching, Rendering, and Routing.
+      Follow the official Vue.js and Vite documentation for up-to-date best practices on Data Fetching, Rendering, and Routing.
       

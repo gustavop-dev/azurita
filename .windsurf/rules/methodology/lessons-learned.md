@@ -1,249 +1,102 @@
 ---
 trigger: model_decision
-description: Project intelligence and lessons learned. Reference for project-specific patterns, preferences, and key insights discovered during development.
+description: Project intelligence and lessons learned for Azurita. Reference for project-specific patterns, preferences, and key insights discovered during development.
 ---
 
-# Lessons Learned — ProjectApp
-
-This file captures important patterns, preferences, and project intelligence that help work more effectively with this codebase. Updated as new insights are discovered.
+# Lessons Learned — Azurita
 
 ---
 
 ## 1. Architecture Patterns
 
-### Content Storage: Structured JSON over CMS
-- Proposal sections, portfolio works, and blog posts use Django `JSONField` for content
-- Each proposal section's `content_json` maps directly to a Vue component's props schema
-- Blog supports dual format: structured JSON (preferred) with HTML fallback via `v-html`
-- This avoids the need for a full CMS while keeping content rich and structured
+### Minimal Backend, SPA-Heavy Frontend
+- The Django backend is intentionally minimal: a single `index` view that serves the Vue SPA, a `/api/health/` health check, and an admin site. There is **no business-logic Django app** — the `puzzles/` app is a stub with empty `models.py` and `views.py`.
+- All product behavior (puzzles, advent calendar interactions, animations) lives in the Vue 3 + TypeScript + Vite SPA in `advent-calendar/`.
 
-### Single Django App: `content`
-- All models, views, serializers, and services live in the `content` app
-- This works for now but may need splitting if scope grows significantly
-- Models are already split into individual files under `content/models/`
+### SPA Shell Pattern
+- `templates/index.html` is the only Django template. It uses `{% load static %}` and injects the Vite-built JS/CSS bundles from `static/frontend/assets/`.
+- The catch-all URL pattern routes any non-`/admin/`, non-`/api/` request to the `index` view, letting the Vue Router handle client-side routing.
+- Build flow: `npm --prefix advent-calendar run build` → emits to `static/frontend/` → `manage.py collectstatic` → nginx serves.
 
-### Service Layer Pattern
-- Business logic lives in `content/services/`, not in views
-- Views are thin FBV wrappers that call service methods
-- Services: `ProposalService`, `ProposalEmailService`, `ProposalPdfService`, `EmailTemplateRegistry`
+### SQLite + Automated Backups
+- Production uses SQLite (`backend/db.sqlite3`) — appropriate for the staging-class workload.
+- `django-dbbackup` runs every Monday 03:00 UTC via Huey, retaining the last 4 backups in `BACKUP_STORAGE_PATH` (default `/var/backups/azurita`).
+
+### Huey Periodic Tasks (all in `backend/azurita_project/tasks.py`)
+- `scheduled_backup` — Mon 03:00 UTC (DB snapshot + retention)
+- `silk_garbage_collection` — daily 04:30 UTC (gated by `ENABLE_SILK`)
+- `weekly_slow_queries_report` — Thu 07:00 UTC (Markdown under `backend/logs/silk-reports/`)
+- `silk_reports_cleanup` — 1st of month 05:45 UTC (purges reports older than 6 months)
+- In dev (`DJANGO_ENV != production`), `HUEY['immediate'] = True` — tasks run synchronously, no worker needed.
+
+### Conditional Silk Profiling
+- `django-silk` activates only when `ENABLE_SILK=True` in env. Off by default.
+- When active, adds `/silk/` (staff-only) for ad-hoc performance investigation.
 
 ---
 
 ## 2. Code Style & Conventions
 
-### Backend: Function-Based Views (FBV)
-- **All** DRF views use `@api_view` decorators, not class-based views
-- Never convert to CBV unless explicitly requested
-- Views file for proposals is very large (123K) — be careful with edits
+### Backend Views: FBV Only
+- One existing view: `azurita_project.views.index` — plain FBV rendering `index.html`.
+- No DRF endpoints yet. When adding APIs, use `@api_view` FBVs. Do not introduce CBVs/APIView.
 
-### Frontend: Pinia Options API
-- **All** Pinia stores use Options API pattern: `{ state, getters, actions }`
-- Do NOT use Composition API (`setup()`) style for stores
-- HTTP requests go through `stores/services/request_http` centralized service
+### Settings Split by Environment
+- `azurita_project/settings.py` — base, uses python-decouple for env vars.
+- `azurita_project/settings_dev.py` — `DEBUG=True`, `ALLOWED_HOSTS=['*']`.
+- `azurita_project/settings_prod.py` — `DEBUG=False`, HSTS (1y), `SECURE_SSL_REDIRECT`, secure cookies, requires `DJANGO_SECRET_KEY` + `DJANGO_ALLOWED_HOSTS`.
+- `DJANGO_SETTINGS_MODULE` is always `azurita_project.settings`. Production mode is activated by `DJANGO_ENV=production`. **Never use `settings_prod` as the module name directly.**
 
-### Bilingual Content Pattern
-- Models have paired fields: `title_en`/`title_es`, `content_json_en`/`content_json_es`, etc.
-- Frontend reads the appropriate field based on current locale
-- Proposals have a `language` field (`es`/`en`) that determines which default content to use
-
-### Naming Conventions
-- Backend: snake_case for everything (Python standard)
-- Frontend stores: snake_case file names (`portfolio_works.js`, `proposals.js`)
-- Frontend components: PascalCase (`BusinessProposal/Greeting.vue`)
-- Frontend composables: camelCase with `use` prefix (`useExpirationTimer.js`)
+### Frontend: Vue 3 + TypeScript + Vite (in `advent-calendar/`)
+- State management: Pinia (composition API style with `defineStore`).
+- No HTTP client configured yet — uses native fetch or will be added.
+- Component naming: PascalCase (CountdownTimer.vue, CustomCursor.vue).
+- Puzzle views use lowercase with underscores (puzzle_1.vue … puzzle_31.vue).
+- Tailwind CSS v4 with custom Christmas-themed color palette.
 
 ---
 
 ## 3. Development Workflow
 
-### Backend Commands Always Need venv
+### Backend Commands
 ```bash
-source venv/bin/activate && <command>
-# or
-venv/bin/python <command>
+source venv/bin/activate    # venv at repo root, not in backend/
+python manage.py runserver  # manage.py is at repo root
+pytest backend/path/to/test_file.py -v  # always specify files
 ```
 
-### Huey Immediate Mode in Development
-- When `DJANGO_ENV != 'production'`, Huey tasks execute synchronously
-- No need to run Redis or Huey worker for development
-- Tasks still need to be importable and functional
-
-### Frontend Dev Proxy
-- Nuxt proxies `/api`, `/admin`, `/static`, `/media` to Django at `127.0.0.1:8000`
-- Both servers must be running simultaneously for full functionality
-- In production, everything goes through Django (no separate Nuxt server)
+### Frontend Dev
+```bash
+npm --prefix advent-calendar run dev    # Vite dev server, default :5173
+npm --prefix advent-calendar run build  # emits to static/frontend/
+npm --prefix advent-calendar run lint
+```
 
 ### Test Execution Rules
-- Never run the full test suite — always specify files
-- Backend: `pytest backend/content/tests/<specific_file> -v`
-- Frontend: `npm test -- <specific_file>`
-- E2E: max 2 files per `npx playwright test` invocation
-- Use `E2E_REUSE_SERVER=1` when dev server is already running
+- Never run the full test suite — always specify files.
+- Backend: `pytest backend/path/to/test_file.py -v` (max 20 tests/batch, 3 commands/cycle).
+- Frontend: Vitest configured but no tests yet. When added: `npm --prefix advent-calendar test -- path/to/file.spec.ts`.
+- E2E: not yet established.
 
 ---
 
 ## 4. Production Deployment
 
 ### Build Flow
-1. Frontend: `npm run build:django` → generates `backend/static/frontend/`
-2. Backend: `python manage.py collectstatic` → copies to `backend/staticfiles/`
-3. Restart: `sudo systemctl restart projectapp && sudo systemctl restart projectapp-huey`
+1. Frontend: `npm --prefix advent-calendar run build` → generates `static/frontend/`
+2. Backend: `DJANGO_ENV=production python manage.py collectstatic --noinput`
+3. Restart: `sudo systemctl restart azurita && sudo systemctl restart azurita-huey`
+4. Verify: `bash /home/ryzepeck/webapps/ops/vps/scripts/deployment/post-deploy-check.sh azurita`
 
-### Django Serves Nuxt Pages
-- The `serve_nuxt` catch-all view in `projectapp/views.py` serves pre-rendered Nuxt pages
-- This is the LAST URL pattern — all other routes take priority
-- CDN URL for assets configurable via `NUXT_APP_CDN_URL`
+See `.agents/skills/deploy-and-check/SKILL.md` for the canonical sequence.
 
 ---
 
-## 5. Email System
+## 5. Known Issues
 
-### Template Registry Pattern
-- All emails defined in `EmailTemplateRegistry` with default content
-- Admin can override content via `EmailTemplateConfig` model
-- Admin can disable specific emails via `is_active` flag
-- Preview rendering available for all templates
-
-### 24h Cooldown Rule
-- `last_automated_email_at` field on `BusinessProposal` tracks last automated email
-- All automated email tasks check this before sending
-- Manual sends (admin clicks "Send") bypass the cooldown
-
-### Automations Pause
-- `automations_paused` flag on `BusinessProposal` stops all automated emails
-- Each Huey task checks this flag early and returns if paused
-
----
-
-## 6. Proposal System Specifics
-
-### Section Types Are Fixed
-- 12 section types defined in `ProposalSection.SectionType` choices
-- Each maps to a specific Vue component in `components/BusinessProposal/`
-- Unique together constraint: `(proposal, section_type)` — one of each per proposal
-
-### Heat Score (1-10)
-- Pre-computed and cached in `cached_heat_score` field
-- Updated by tracking endpoint and periodic task (`refresh_all_heat_scores`)
-- Based on: view count, section time, recency, engagement patterns
-
-### Change Log Types
-- 20+ change types in `ProposalChangeLog.ChangeType`
-- Includes: created, updated, sent, viewed, accepted, rejected, resent, expired, duplicated, commented, negotiating, reengagement, call, meeting, followup, note, calc_confirmed, calc_abandoned, auto_archived, status_change, cond_accepted, calc_followup
-
----
-
-## 7. Platform / Accounts App Patterns
-
-### Dual Auth Strategy
-- `/panel/` admin uses Django session + CSRF (same as before)
-- `/platform/` uses JWT via SimpleJWT (access + refresh tokens)
-- Platform stores use `composables/usePlatformApi.js` (axios instance with JWT interceptors)
-- Content stores use `stores/services/request_http` (axios with CSRF)
-- **Never mix these two HTTP clients**
-
-### Platform Store Naming
-- Platform stores use kebab-case: `platform-auth.js`, `platform-clients.js`, `platform-projects.js`, `platform-requirements.js`
-- Content stores use snake_case: `portfolio_works.js`, `proposals.js`
-
-### Accounts Services
-- `services/onboarding.py` — profile completion flow
-- `services/tokens.py` — JWT token generation/refresh
-- `services/verification.py` — OTP code generation and validation
-- `services/image_utils.py` — avatar processing
-
-### Platform Layout
-- `layouts/platform.vue` with collapsible sidebar, mobile drawer, theme toggle
-- Role-based navigation: admin sees all, client sees own projects only
-- Dark mode support via `usePlatformTheme` composable
-
----
-
-## 8. Testing Insights
-
-### Backend conftest.py
-- Custom coverage report with Unicode progress bars replaces default pytest-cov output
-- `api_client` fixture provides unauthenticated DRF APIClient
-- Content tests have their own `conftest.py` with model-specific fixtures
-
-### E2E Flow Definitions
-- Every navigation flow must be registered in `docs/USER_FLOW_MAP.md` and `frontend/e2e/flow-definitions.json`
-- E2E tests must reflect real user integrations
-- Follow quality standards from `docs/TESTING_QUALITY_STANDARDS.md`
-
-### CI Sharding
-- Playwright E2E tests are sharded into 5 parallel jobs
-- Blob reports are merged after all shards complete
-- Test quality gate runs after all test suites pass
-
-### Known Test Issues
-- `usePlatformApi.test.js` has 4 failing tests due to `window.location.href` assertions in JSDOM
-- JSDOM doesn't support real navigation; `window.location.href` stays as `http://localhost/` after assignment
-- Fix: use `delete window.location` + `Object.defineProperty` or mock `window.location` properly
-
-### Playwright + Nuxt Dev Server Patterns
-- **Never use `networkidle`** with Vite/Nuxt dev server — HMR WebSocket keeps connection alive, causing infinite hang
-- Use `{ waitUntil: 'domcontentloaded' }` in `page.goto()` + explicit element waits (`getByRole('heading').waitFor()`)
-- **Always add `test.setTimeout(60_000)`** to describe blocks for SPA routes — first visit triggers Vite on-demand compilation
-- **Strict mode violations** are common when sidebar navigation duplicates page content text. Fix patterns:
-  - Scope to `page.locator('main')` for page-specific content
-  - Use `getByRole('heading', { name: '...' })` instead of `getByText('...')`
-  - Use `{ exact: true }` when substring matching causes ambiguity (e.g., 'Activo' vs 'Activos')
-- **i18n prefix strategy** adds locale prefix to all `<NuxtLink>` hrefs — use regex in `toHaveAttribute('href', /\/platform\/...$/)`
-- **`<label>` without `for` attribute**: `getByLabel()` won't work. Use `page.locator('input[type="date"]')` or `page.locator('select').first()`
-- **HTML5 validation bypass**: For testing custom validators, add `novalidate` via `page.evaluate(() => document.querySelector('form').setAttribute('novalidate', ''))`
-- **Port conflicts**: Use `E2E_PORT=3001 E2E_REUSE_SERVER=1` when port 3000 is occupied
-
----
-
-## 10. Document System Patterns
-
-### Generic PDF Service Architecture
-- `DocumentPdfService` handles PDF generation for generic branded documents (separate from proposals)
-- Shared PDF utilities extracted into `pdf_utils.py` (36K) — used by both `ProposalPdfService` and `DocumentPdfService`
-- `MarkdownParser` (`markdown_parser.py`, 9K) parses markdown content for Document rendering
-- Active work on branch `generate-pdf-with-template`
-
-### Document Model Conventions
-- `Document` model in `content/models/document.py` — follows same app as proposals, portfolio, blog
-- Status lifecycle: `draft → published → archived` (same pattern as other content models)
-- Language field mirrors proposal (`es`/`en`) for bilingual support
-- `cover_type` field: `generic`, `none`, `proposal` — determines PDF cover rendering
-- UUID field for public access (same pattern as `BusinessProposal`)
-
-### Frontend: Document Store + Composable
-- `documents.js` store uses `request_http` (same as `proposals.js`, `blog.js`) — NOT platform HTTP client
-- `useMarkdownPreview.js` composable for live markdown preview in the document editor
-- `usePlatformCustomTheme.js` composable for custom theme configuration in platform
-
----
-
-## 11. Platform Expanded Module Patterns
-
-### New Platform Modules Follow Consistent Structure
-Each new platform module (Bug Reports, Change Requests, Deliverables, Notifications, Payments) follows:
-- Backend: model in `accounts/models.py`, DRF views, URL patterns in `accounts/urls.py`, test file in `accounts/tests/`
-- Frontend: store `platform-<module>.js` using `usePlatformApi` HTTP client, pages at `/platform/<module>` (global) and `/platform/projects/:id/<module>` (per-project)
-- Per-project views exist for: bugs, changes, deliverables, payments
-- Global-only views: notifications, board, profile
-
-### Accounts URL Count Growth
-- Accounts URL patterns grew from 15 → 48 after platform module expansion
-- Each new module adds ~5-7 URL patterns (list, create, detail, update, delete)
-- Never hardcode the count — verify with `grep -c "path(" backend/accounts/urls.py`
-
----
-
-## 12. Methodology Maintenance
-
-### Memory Bank Source
-- Methodology rules based on [rules_template](https://github.com/Bhartendu-Kumar/rules_template)
-- Original format is Cursor `.mdc` files; must be adapted to Windsurf `.md` format
-- Key adaptation: replace `mdc:` prefix links with standard paths, `.mdc` → `.md` references, `src/` → `backend/`+`frontend/`
-- `directory-structure.md` must be customized per project (the template uses generic `src/`, `test/`, etc.)
-
-### When to Refresh Memory Files
-- After adding a new Django app or major feature module
-- After significant changes to test infrastructure or counts
-- When file counts drift by >10% from documented values
-- After methodology rule updates from upstream template
+_No known issues recorded yet. When a bug warrants long-lived documentation, add it here:_
+```
+#### [KNOWN-NNN] short title
+- **Context**: ...
+- **Workaround**: ...
+```

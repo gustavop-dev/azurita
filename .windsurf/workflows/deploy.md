@@ -24,15 +24,20 @@ cd /home/ryzepeck/webapps/azurita && git pull origin main
 
 3. Install backend dependencies and run migrations:
 ```bash
-cd /home/ryzepeck/webapps/azurita && source venv/bin/activate && pip install -r requirements.txt && python manage.py migrate
+cd /home/ryzepeck/webapps/azurita && source venv/bin/activate && pip install -r requirements.txt && DJANGO_ENV=production python manage.py migrate
 ```
 
-4. Collect static files:
+4. Build the frontend (Vue 3 Vite SPA):
 ```bash
-cd /home/ryzepeck/webapps/azurita && source venv/bin/activate && python manage.py collectstatic --noinput
+npm --prefix /home/ryzepeck/webapps/azurita/advent-calendar ci && npm --prefix /home/ryzepeck/webapps/azurita/advent-calendar run build
 ```
 
-5. Restart services:
+5. Collect static files:
+```bash
+cd /home/ryzepeck/webapps/azurita && source venv/bin/activate && DJANGO_ENV=production python manage.py collectstatic --noinput
+```
+
+6. Restart services:
 ```bash
 sudo systemctl restart azurita && sudo systemctl restart azurita-huey
 ```
@@ -41,17 +46,16 @@ sudo systemctl restart azurita && sudo systemctl restart azurita-huey
 
 - **Domain**: `azurita.projectapp.co`
 - **Backend**: Django (`azurita_project` module), settings via `DJANGO_SETTINGS_MODULE=azurita_project.settings`
-- **Frontend**: No separate frontend (Django templates)
-- **Services**: `azurita.service` (Gunicorn via socket), `azurita-huey.service`
+- **Frontend**: Vue 3 Vite SPA (`advent-calendar/`) → `static/frontend/` + Django `index` catch-all view
+- **Services**: `azurita.service` (Gunicorn), `azurita-huey.service`
 - **Nginx**: `/etc/nginx/sites-available/azurita`
 - **Socket**: `/home/ryzepeck/webapps/azurita/azurita.sock`
 - **Database**: SQLite (`backend/db.sqlite3`)
-- **Resource limits**: MemoryMax=250MB, CPUQuota=40%, OOMScoreAdjust=300
 - **Redis DB**: /6
 
 ## Notes
 
 - VPS operations scripts live in `/home/ryzepeck/webapps/ops/vps/scripts/`.
-- azurita uses SQLite (lightweight project), not MySQL.
-- `manage.py` is at the repo root, not in `backend/`.
-- WorkingDirectory for gunicorn is `/home/ryzepeck/webapps/azurita/backend`.
+- azurita uses SQLite (lightweight project).
+- `manage.py` is at the repo root; `venv/` is at the repo root too.
+- WorkingDirectory for gunicorn is `/home/ryzepeck/webapps/azurita`.
