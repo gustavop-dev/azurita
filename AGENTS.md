@@ -267,13 +267,15 @@ def validate_upload(file):
 
 ## Memory Bank System
 
-Azurita does **not** currently maintain a Memory Bank (`docs/methodology/` and `tasks/` are not yet established). The repo's long-lived context lives in:
+Azurita maintains a Memory Bank at:
 
-- `README.md` — project overview, stack, dev setup
-- `BUILD.md` — build instructions for the Vue 3 SPA in `advent-calendar/`
-- `docs/` — testing standards and tooling references
-
-If a Memory Bank is needed in the future, it should follow the canonical structure (`docs/methodology/{product_requirement_docs,architecture,technical,error-documentation,lessons-learned}.md` + `tasks/{tasks_plan,active_context}.md`) and be initialized via the `methodology-setup` skill.
+- `docs/methodology/product_requirement_docs.md` — product scope, user flows, constraints
+- `docs/methodology/architecture.md` — system diagram, component inventory, infrastructure
+- `docs/methodology/technical.md` — dev setup, commands, settings details, Tailwind tokens
+- `docs/methodology/lessons-learned.md` — project-specific patterns and gotchas
+- `docs/methodology/error-documentation.md` — known issues and resolved bugs
+- `tasks/tasks_plan.md` — feature backlog and phase tracking
+- `tasks/active_context.md` — current work focus and session notes
 
 ---
 
