@@ -9,7 +9,7 @@
 
 - **Name**: Azurita
 - **Domain**: `azurita.projectapp.co` / `www.azurita.projectapp.co`
-- **Stack**: Django 5 + DRF (backend) / Nuxt 3 + Vue 3 (frontend) / MySQL 8 / Redis / Huey
+- **Stack**: Django 5.2.8 + DRF (backend) / Vue 3 + Vite SPA (`advent-calendar/`) / SQLite / Redis / Huey
 - **Server path**: `/home/ryzepeck/webapps/azurita`
 - **Services**: `azurita.service` (Gunicorn), `azurita.socket`, `azurita-huey.service`
 - **Settings module**: `DJANGO_SETTINGS_MODULE=azurita_project.settings_prod`
