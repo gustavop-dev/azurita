@@ -58,7 +58,7 @@ ROOT_URLCONF = 'azurita_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR.parent / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -135,6 +135,11 @@ HUEY = RedisHuey(
 # ---------------------------------------------------------------------------
 # Storage is configured via STORAGES['dbbackup'] above (new-style API).
 DBBACKUP_CLEANUP_KEEP = 4
+
+# Backups: permite desactivar la tarea programada en staging via .env
+BACKUPS_ENABLED = config('BACKUPS_ENABLED', default=True, cast=bool)
+# Slow queries report: solo tiene sentido con tráfico real (desactivar en staging)
+ENABLE_SLOW_QUERIES_REPORT = config('ENABLE_SLOW_QUERIES_REPORT', default=True, cast=bool)
 
 # ---------------------------------------------------------------------------
 # Silk profiling (conditional)

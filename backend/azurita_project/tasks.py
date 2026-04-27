@@ -23,6 +23,10 @@ logger = logging.getLogger('backups')
 @periodic_task(crontab(day_of_week='1', hour='3', minute='0'))
 def scheduled_backup():
     """Automated weekly backup of SQLite database (Monday 03:00 UTC)."""
+    if not getattr(settings, 'BACKUPS_ENABLED', True):
+        logger.info("scheduled_backup skipped: BACKUPS_ENABLED=False")
+        return
+
     from django.core.management import call_command
     timestamp = timezone.now().strftime('%Y-%m-%d_%H%M%S')
     logger.info('=== Starting scheduled backup %s ===', timestamp)
@@ -52,6 +56,9 @@ def silk_garbage_collection():
 def weekly_slow_queries_report():
     """Weekly report of slow queries and potential N+1 patterns."""
     if not getattr(settings, 'ENABLE_SILK', False):
+        return
+    if not getattr(settings, 'ENABLE_SLOW_QUERIES_REPORT', True):
+        logger.info("weekly_slow_queries_report skipped: ENABLE_SLOW_QUERIES_REPORT=False")
         return
     from django.db.models import Count
     try:
